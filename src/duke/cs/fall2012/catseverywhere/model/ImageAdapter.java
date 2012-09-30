@@ -1,15 +1,14 @@
 package duke.cs.fall2012.catseverywhere.model;
 
 import duke.cs.fall2012.catseverywhere.R;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 /**
  * hardcoded image adapter to showcase the use of grid and gallery project 

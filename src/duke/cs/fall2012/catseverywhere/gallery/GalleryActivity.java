@@ -1,15 +1,9 @@
 package duke.cs.fall2012.catseverywhere.gallery;
 
 import duke.cs.fall2012.catseverywhere.R;
-
-import duke.cs.fall2012.catseverywhere.R.id;
-import duke.cs.fall2012.catseverywhere.R.layout;
 import duke.cs.fall2012.catseverywhere.model.ImageAdapter;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Gallery;
 
 public class GalleryActivity extends Activity {

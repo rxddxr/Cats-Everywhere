@@ -1,9 +1,8 @@
 package duke.cs.fall2012.catseverywhere.gallery;
 
 import duke.cs.fall2012.catseverywhere.R;
+
 import duke.cs.fall2012.catseverywhere.model.ImageAdapter;
-import duke.cs.fall2012.catseverywhere.R.id;
-import duke.cs.fall2012.catseverywhere.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
