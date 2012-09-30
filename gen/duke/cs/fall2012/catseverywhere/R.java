@@ -18,8 +18,9 @@ public final class R {
         public static final int death_valley_sand_dunes=0x7f020004;
         public static final int ic_action_search=0x7f020005;
         public static final int ic_launcher=0x7f020006;
-        public static final int morning_glory_pool=0x7f020007;
-        public static final int splash_background=0x7f020008;
+        public static final int ic_menu_gallery=0x7f020007;
+        public static final int morning_glory_pool=0x7f020008;
+        public static final int splash_background=0x7f020009;
     }
     public static final class id {
         public static final int Caption=0x7f08000c;
@@ -38,6 +39,7 @@ public final class R {
         public static final int etEmail=0x7f08000f;
         public static final int etName=0x7f080013;
         public static final int etPassword=0x7f080011;
+        public static final int ic_menu_gallery=0x7f080016;
         public static final int imgview_preview=0x7f080007;
         public static final int mapview1=0x7f080001;
         public static final int menu_settings=0x7f080015;
@@ -57,8 +59,9 @@ public final class R {
         public static final int activity_google_maps=0x7f070000;
         public static final int activity_image_selector=0x7f070001;
         public static final int activity_splash=0x7f070002;
-        public static final int main=0x7f070003;
-        public static final int preferences=0x7f070004;
+        public static final int imageupload_menu=0x7f070003;
+        public static final int main=0x7f070004;
+        public static final int preferences=0x7f070005;
     }
     public static final class raw {
         public static final int blue_circle=0x7f040000;
@@ -66,6 +69,7 @@ public final class R {
         public static final int lion_roar_01=0x7f040002;
     }
     public static final class string {
+        public static final int WebServiceURL=0x7f050010;
         public static final int app_name=0x7f050000;
         public static final int email=0x7f050006;
         public static final int enterMail=0x7f050007;

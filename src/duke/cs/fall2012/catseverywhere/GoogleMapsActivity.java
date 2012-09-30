@@ -97,16 +97,17 @@ public class GoogleMapsActivity extends MapActivity {
            
         });
         
-//        final Button uploadButton = (Button) findViewById(R.id.button_upload);
-//        findMeButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                // Perform action on click
-//            	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
-//            	startActivity(imageUploadScreen);
-//            	
-//            }
-//           
-//        });
+
+        final Button uploadButton = (Button) findViewById(R.id.button_upload);
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
+            	startActivity(imageUploadScreen);
+            	
+            }
+           
+        });
         
       final Button testButton = (Button) findViewById(R.id.button_test_main);
       testButton.setOnClickListener(new View.OnClickListener() {
