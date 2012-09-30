@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_world"
+        tools:context=".GoogleMapsActivity" />
+
+    <com.google.android.maps.MapView
+        android:id="@+id/mapview1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:apiKey="0Bzb28nFdqMaefNGBcteojasb5m2yWsSWmoVwfw"
+        android:clickable="true"
+        android:enabled="true" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_marginBottom="17dp"
+        android:text="Find Pic" />
+
+    <Button
+        android:id="@+id/button_img_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:text="IMG Select" />
+
+    <Button
+        android:id="@+id/button_find_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/button1"
+        android:text="Find me" />
+
+    <Button
+        android:id="@+id/button_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_marginTop="19dp"
+        android:text="Upload" />
+
+    <Button
+        android:id="@+id/button_test_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="T Main" />
+
+</RelativeLayout>

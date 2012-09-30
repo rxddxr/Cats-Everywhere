@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imgview_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+<!--     <Button -->
+<!--         android:id="@+id/button_select_img" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignTop="@+id/imgview_preview" -->
+<!--         android:layout_toRightOf="@+id/imgview_preview" -->
+<!--         android:text="Choose Image" /> -->
+
+<!--     <Button -->
+<!--         android:id="@+id/button_view_pic_map" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignBaseline="@+id/button_select_img" -->
+<!--         android:layout_alignBottom="@+id/button_select_img" -->
+<!--         android:layout_marginLeft="26dp" -->
+<!--         android:layout_toRightOf="@+id/button_select_img" -->
+<!--         android:text="View in Map" /> -->
+    
+     <Button
+        android:id="@+id/button_select_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Image" />
+
+    <Button
+        android:id="@+id/button_view_pic_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_toRightOf="@+id/button_select_img"
+        android:text="View in Map" />
+
+</RelativeLayout>
