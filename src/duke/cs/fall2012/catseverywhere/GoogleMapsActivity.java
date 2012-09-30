@@ -97,6 +97,7 @@ public class GoogleMapsActivity extends MapActivity {
            
         });
         
+<<<<<<< HEAD
 //        final Button uploadButton = (Button) findViewById(R.id.button_upload);
 //        findMeButton.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
@@ -107,6 +108,18 @@ public class GoogleMapsActivity extends MapActivity {
 //            }
 //           
 //        });
+=======
+        final Button uploadButton = (Button) findViewById(R.id.button_upload);
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
+            	startActivity(imageUploadScreen);
+            	
+            }
+           
+        });
+>>>>>>> Added an Image Upload Activity
         
       final Button testButton = (Button) findViewById(R.id.button_test_main);
       testButton.setOnClickListener(new View.OnClickListener() {
