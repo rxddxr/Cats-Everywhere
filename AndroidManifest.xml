@@ -70,6 +70,14 @@
             android:name=".gallery.GridActivity"
             android:label="@string/title_activity_grid" >
         </activity>
+        <activity 
+            android:name=".ImageUpload"
+            android:label="Upload">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

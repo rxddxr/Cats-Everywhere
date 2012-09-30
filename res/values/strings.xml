@@ -19,5 +19,6 @@
     <string name="title_activity_gallery">GalleryActivity</string>
     <string name="title_activity_grid">GridActivity</string>
     <string name="Gallery">Gallery</string>
+    <string name="WebServiceURL">http://10.0.2.2</string>
 
 </resources>
