@@ -16,9 +16,6 @@
     <string name="title_activity_splash">Roar</string>
     <string name="title_activity_google_maps">Cat Map</string>
     <string name="title_activity_image_selector">Select an Image</string>
-<<<<<<< HEAD
-=======
     <string name="WebServiceURL">http://10.0.2.2</string>
->>>>>>> Added an Image Upload Activity
 
 </resources>
