@@ -52,6 +52,7 @@ public class ImageUpload extends Activity {
 	private ProgressDialog dialog;
 	private HttpEntity myResEntity;
 	private TextView tv, res;
+	private String filePath = null;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -76,7 +77,8 @@ public class ImageUpload extends Activity {
 				} else {
 					dialog = ProgressDialog.show(ImageUpload.this, "Uploading",
 							"Please wait...", true);
-					new ImageUploadTask().execute();
+					//new ImageUploadTask().execute();
+					doFileUpload(filePath);
 				}
 			}
 		});
