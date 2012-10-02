@@ -52,7 +52,7 @@ public class ImageUpload extends Activity {
 	private ProgressDialog dialog;
 	private HttpEntity myResEntity;
 	private TextView tv, res;
-	private String filePath = null;
+	private String filePath;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -78,7 +78,13 @@ public class ImageUpload extends Activity {
 					dialog = ProgressDialog.show(ImageUpload.this, "Uploading",
 							"Please wait...", true);
 					//new ImageUploadTask().execute();
-					doFileUpload(filePath);
+					new Thread(new Runnable() {
+						public void run() {
+							doFileUpload(filePath);
+
+						}
+					}).start();
+					//doFileUpload(filePath);
 				}
 			}
 		});
@@ -122,7 +128,7 @@ public class ImageUpload extends Activity {
 		case PICK_IMAGE:
 			if (resultCode == Activity.RESULT_OK) {
 				Uri selectedImageUri = data.getData();
-				String filePath = null;
+				//String filePath = null;
 
 				try {
 					// OI FILE Manager
@@ -130,7 +136,7 @@ public class ImageUpload extends Activity {
 
 					// MEDIA GALLERY
 					String selectedImagePath = getPath(selectedImageUri);
-
+					System.out.println("IMAGE PATH: " +  selectedImagePath);
 					if (selectedImagePath != null) {
 						filePath = selectedImagePath;
 					} else if (filemanagerstring != null) {
@@ -281,26 +287,29 @@ public class ImageUpload extends Activity {
 		 
         File file1 = new File(filePath);
         
-        String urlString = "http://10.0.2.2/upload_test/upload_media_test.php";
+        String urlString = "http://squashysquash.com/CatsEverywhere/uploadfile.php";
         try
         {
              HttpClient client = new DefaultHttpClient();
              HttpPost post = new HttpPost(urlString);
+             HttpContext localContext = new BasicHttpContext();
              FileBody bin1 = new FileBody(file1);
              MultipartEntity reqEntity = new MultipartEntity();
              reqEntity.addPart("uploadedFile", bin1);
              reqEntity.addPart("user", new StringBody("TestUser"));
              post.setEntity(reqEntity);
-             HttpResponse response = client.execute(post);
+             HttpResponse response = client.execute(post, localContext);
+             System.out.println("PHP RESPONSE: " + response);
              myResEntity = response.getEntity();
+             
              final String response_str = EntityUtils.toString(myResEntity);
              if (myResEntity != null) {
                  Log.i("RESPONSE",response_str);
                  runOnUiThread(new Runnable(){
                         public void run() {
                              try {
-                                ((TextView) myResEntity).setTextColor(Color.GREEN);
-                                res.setText("n Response from server : n " + response_str);
+                               // ((TextView) myResEntity).setTextColor(Color.GREEN);
+                               // res.setText("n Response from server : n " + response_str);
                                 Toast.makeText(getApplicationContext(),"Upload Complete. Check the server uploads directory.", Toast.LENGTH_LONG).show();
                             } catch (Exception e) {
                                 e.printStackTrace();
