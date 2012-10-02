@@ -10,4 +10,17 @@
 		android:layout_height="wrap_content" android:hint="Write caption"
 		android:singleLine="true" android:layout_toRightOf="@id/Upload"
 		android:layout_alignParentBottom="true" />
+ 
+ <TextView
+    android:id="@+id/res"
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:text=""
+   />
+ <TextView
+    android:id="@+id/tv"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Selected File path : "
+    />
 </RelativeLayout>
