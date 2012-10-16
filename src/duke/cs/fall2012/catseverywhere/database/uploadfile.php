@@ -22,7 +22,7 @@ $id = $_REQUEST['id'];
 echo $id;
 //$owner = $_REQUEST['owner'];
 //$locaton = $_REQUEST['location'];
-//$keywords = $_REQUEST['keywords'];
+$keywords = $_REQUEST['keywords'];
 
 //MYSQL
 $con = mysql_connect("mysql.squashysquash.com","antaressql","password");
