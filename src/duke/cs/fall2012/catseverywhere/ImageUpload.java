@@ -296,7 +296,7 @@ public class ImageUpload extends Activity {
              FileBody bin1 = new FileBody(file1);
              MultipartEntity reqEntity = new MultipartEntity();
              reqEntity.addPart("uploadedFile", bin1);
-             reqEntity.addPart("user", new StringBody("TestUser"));
+             reqEntity.addPart("id", new StringBody(getId(file1)));
              post.setEntity(reqEntity);
              HttpResponse response = client.execute(post, localContext);
              System.out.println("PHP RESPONSE: " + response);
@@ -322,4 +322,12 @@ public class ImageUpload extends Activity {
              Log.e("Debug", "error: " + ex.getMessage(), ex);
         }
       }
+	
+	public String getId(File photo) {
+		/*
+		 * Create an id for photo to use as id in database.  uses hashcode to create
+		 * unique id for each file
+		*/
+		return Integer.toString(photo.hashCode());
+	}
 }
