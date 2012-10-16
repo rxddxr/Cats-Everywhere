@@ -26,7 +26,6 @@ public class Main extends Activity implements OnClickListener {
     	galleryButton.setOnClickListener(this);
     }
 
-	@Override
 	public void onClick(View button) {
 		switch(button.getId()) {
 		case R.id.bPrefs:
