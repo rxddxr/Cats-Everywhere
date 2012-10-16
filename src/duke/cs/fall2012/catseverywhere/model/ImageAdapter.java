@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import duke.cs.fall2012.catseverywhere.R;
+
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
