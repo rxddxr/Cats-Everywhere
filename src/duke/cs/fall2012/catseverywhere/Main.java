@@ -17,6 +17,7 @@ public class Main extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         initialize();
+
     }
     
     public void initialize() {

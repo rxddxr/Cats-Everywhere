@@ -9,6 +9,11 @@ public class MyApplication extends Application {
 	 */
     private String myUser;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+ 
     public String getUser() {
         return myUser;
     }
