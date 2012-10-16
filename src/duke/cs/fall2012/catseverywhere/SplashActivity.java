@@ -16,7 +16,8 @@ public class SplashActivity extends Activity {
         //startupSound.start(); //Commented out to avoid making noise in Perkins.
         
         Thread timer = new Thread() {
-        	public void run(){
+        	@Override
+			public void run(){
         		try{
         			sleep(5000);        			
         		}
