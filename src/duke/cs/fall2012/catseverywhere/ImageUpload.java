@@ -64,14 +64,12 @@ public class ImageUpload extends Activity {
 		imgView = (ImageView) findViewById(R.id.ImageView);
 		upload = (Button) findViewById(R.id.Upload);
 		caption = (EditText) findViewById(R.id.Caption);
-		
-		tv = (TextView)findViewById(R.id.tv);
-        res = (TextView)findViewById(R.id.res);
-		
-		
+
+		tv = (TextView) findViewById(R.id.tv);
+		res = (TextView) findViewById(R.id.res);
+
 		upload.setOnClickListener(new View.OnClickListener() {
 
-			@Override
 			public void onClick(View v) {
 				if (bitmap == null) {
 					Toast.makeText(getApplicationContext(),
@@ -79,9 +77,8 @@ public class ImageUpload extends Activity {
 				} else {
 					dialog = ProgressDialog.show(ImageUpload.this, "Uploading",
 							"Please wait...", true);
-					//new ImageUploadTask().execute();
+					// new ImageUploadTask().execute();
 					new Thread(new Runnable() {
-						@Override
 						public void run() {
 							doFileUpload(filePath);
 						}
@@ -112,8 +109,7 @@ public class ImageUpload extends Activity {
 						Intent.createChooser(intent, "Select Picture"),
 						PICK_IMAGE);
 			} catch (Exception e) {
-				Toast.makeText(getApplicationContext(),
-						e.getMessage(),
+				Toast.makeText(getApplicationContext(), e.getMessage(),
 						Toast.LENGTH_LONG).show();
 				Log.e(e.getClass().getName(), e.getMessage(), e);
 			}
@@ -129,7 +125,7 @@ public class ImageUpload extends Activity {
 		case PICK_IMAGE:
 			if (resultCode == Activity.RESULT_OK) {
 				Uri selectedImageUri = data.getData();
-				//String filePath = null;
+				// String filePath = null;
 
 				try {
 					// OI FILE Manager
@@ -137,7 +133,7 @@ public class ImageUpload extends Activity {
 
 					// MEDIA GALLERY
 					String selectedImagePath = getPath(selectedImageUri);
-					System.out.println("IMAGE PATH: " +  selectedImagePath);
+					System.out.println("IMAGE PATH: " + selectedImagePath);
 					if (selectedImagePath != null) {
 						filePath = selectedImagePath;
 					} else if (filemanagerstring != null) {
@@ -197,8 +193,7 @@ public class ImageUpload extends Activity {
 			} catch (Exception e) {
 				if (dialog.isShowing())
 					dialog.dismiss();
-				Toast.makeText(getApplicationContext(),
-						e.getMessage(),
+				Toast.makeText(getApplicationContext(), e.getMessage(),
 						Toast.LENGTH_LONG).show();
 				Log.e(e.getClass().getName(), e.getMessage(), e);
 				return null;
@@ -233,8 +228,7 @@ public class ImageUpload extends Activity {
 					}
 				}
 			} catch (Exception e) {
-				Toast.makeText(getApplicationContext(),
-						e.getMessage(),
+				Toast.makeText(getApplicationContext(), e.getMessage(),
 						Toast.LENGTH_LONG).show();
 				Log.e(e.getClass().getName(), e.getMessage(), e);
 			}
@@ -247,8 +241,7 @@ public class ImageUpload extends Activity {
 		if (cursor != null) {
 			// HERE YOU WILL GET A NULLPOINTER IF CURSOR IS NULL
 			// THIS CAN BE, IF YOU USED OI FILE MANAGER FOR PICKING THE MEDIA
-			int column_index = cursor
-					.getColumnIndexOrThrow(MediaColumns.DATA);
+			int column_index = cursor.getColumnIndexOrThrow(MediaColumns.DATA);
 			cursor.moveToFirst();
 			return cursor.getString(column_index);
 		} else
@@ -283,60 +276,62 @@ public class ImageUpload extends Activity {
 		imgView.setImageBitmap(bitmap);
 
 	}
-	
-	private void doFileUpload(String filePath){
-		 
-        File file1 = new File(filePath);
-        
-        String urlString = "http://squashysquash.com/CatsEverywhere/uploadfile.php";
-        try
-        {
-             HttpClient client = new DefaultHttpClient();
-             HttpPost post = new HttpPost(urlString);
-             HttpContext localContext = new BasicHttpContext();
-             FileBody bin1 = new FileBody(file1);
-             MultipartEntity reqEntity = new MultipartEntity();
-             reqEntity.addPart("uploadedFile", bin1);
-             reqEntity.addPart("id", new StringBody(getId(file1)));
-             
-             //UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
-             //reqEntity.addPart("owner", null);
-             //reqEntity.addPart("location", null);
-             //reqEntity.addPart("keywords", null);
-             
-             post.setEntity(reqEntity);
-             HttpResponse response = client.execute(post, localContext);
-             System.out.println("PHP RESPONSE: " + response);
-             myResEntity = response.getEntity();
-             
-             final String response_str = EntityUtils.toString(myResEntity);
-             if (myResEntity != null) {
-                 Log.i("RESPONSE",response_str);
-                 runOnUiThread(new Runnable(){
-                        @Override
-						public void run() {
-                             try {
-                               // ((TextView) myResEntity).setTextColor(Color.GREEN);
-                               // res.setText("n Response from server : n " + response_str);
-                                Toast.makeText(getApplicationContext(),"Upload Complete. Check the server uploads directory.", Toast.LENGTH_LONG).show();
-                                dialog.dismiss();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                           }
-                    });
-             }
-        }
-        catch (Exception ex){
-             Log.e("Debug", "error: " + ex.getMessage(), ex);
-        }
-      }
-	
+
+	private void doFileUpload(String filePath) {
+
+		File file1 = new File(filePath);
+
+		String urlString = "http://squashysquash.com/CatsEverywhere/uploadfile.php";
+		try {
+			HttpClient client = new DefaultHttpClient();
+			HttpPost post = new HttpPost(urlString);
+			HttpContext localContext = new BasicHttpContext();
+			FileBody bin1 = new FileBody(file1);
+			MultipartEntity reqEntity = new MultipartEntity();
+			reqEntity.addPart("uploadedFile", bin1);
+			reqEntity.addPart("id", new StringBody(getId(file1)));
+
+			// UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
+			// reqEntity.addPart("owner", null);
+			// reqEntity.addPart("location", null);
+			// reqEntity.addPart("keywords", null);
+
+			post.setEntity(reqEntity);
+			HttpResponse response = client.execute(post, localContext);
+			System.out.println("PHP RESPONSE: " + response);
+			myResEntity = response.getEntity();
+
+			final String response_str = EntityUtils.toString(myResEntity);
+			if (myResEntity != null) {
+				Log.i("RESPONSE", response_str);
+				runOnUiThread(new Runnable() {
+					public void run() {
+						try {
+							// ((TextView)
+							// myResEntity).setTextColor(Color.GREEN);
+							// res.setText("n Response from server : n " +
+							// response_str);
+							Toast.makeText(
+									getApplicationContext(),
+									"Upload Complete. Check the server uploads directory.",
+									Toast.LENGTH_LONG).show();
+							dialog.dismiss();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		} catch (Exception ex) {
+			Log.e("Debug", "error: " + ex.getMessage(), ex);
+		}
+	}
+
 	public String getId(File photo) {
 		/*
-		 * Create an id for photo to use as id in database.  uses hashcode to create
-		 * unique id for each file
-		*/
+		 * Create an id for photo to use as id in database. uses hashcode to
+		 * create unique id for each file
+		 */
 		return Integer.toString(photo.hashCode());
 	}
 }

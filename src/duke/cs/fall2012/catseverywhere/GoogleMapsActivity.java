@@ -66,7 +66,6 @@ public class GoogleMapsActivity extends MapActivity {
         final Button button = (Button) findViewById(R.id.button1);
         
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
 			public void onClick(View v) {
                 // Perform action on click
             	System.out.println("HAI");
@@ -92,7 +91,6 @@ public class GoogleMapsActivity extends MapActivity {
 
         final Button findMeButton = (Button) findViewById(R.id.button_find_me);
         findMeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
 			public void onClick(View v) {
             	myMapController.animateTo(myLocListener.getCurrentGeoP());
             	myMapController.setZoom(17);
@@ -104,7 +102,6 @@ public class GoogleMapsActivity extends MapActivity {
 
         final Button uploadButton = (Button) findViewById(R.id.button_upload);
         uploadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
 			public void onClick(View v) {
                 // Perform action on click
             	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
@@ -116,7 +113,6 @@ public class GoogleMapsActivity extends MapActivity {
       
       final Button testButton = (Button) findViewById(R.id.button_test_main);
       testButton.setOnClickListener(new View.OnClickListener() {
-          @Override
 		public void onClick(View v) {
               // Perform action on click
           	Intent testMain= new Intent(getApplicationContext(), Main.class);

@@ -24,7 +24,6 @@ public class Login extends Activity implements OnClickListener{
 	EditText email, password;
 	Button submit;
 	
-	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -37,10 +36,8 @@ public class Login extends Activity implements OnClickListener{
     	submit.setOnClickListener(this);
     }
 
-	@Override
 	public void onClick(View v) {
 		new Thread(new Runnable() {
-			@Override
 			public void run() {
 				verifyCredentials();
 
