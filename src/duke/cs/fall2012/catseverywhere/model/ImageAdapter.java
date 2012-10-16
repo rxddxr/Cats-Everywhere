@@ -16,6 +16,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import duke.cs.fall2012.catseverywhere.R;
 
@@ -38,32 +40,20 @@ public class ImageAdapter extends BaseAdapter{
 	
 	private String mode = "";
 	
+	public String[] getImagesFromDb() {
 	//UPDATE TO PULL FROM DB
-	JSONArray reply = new JSONArray(listen.executeUrl("http://squashysquash.com/CatsEverywhere/getImages.php"));
-	String urlString = "http://squashysquash.com/CatsEverywhere/getImages.php";
-    try
-    {
-         HttpClient client = new DefaultHttpClient();
-         HttpGet get = new HttpGet(urlString);
-         HttpResponse response = client.execute(get);
-         System.out.println("PHP RESPONSE: " + response);
-         
-         JSONArray images = new JSONArray(response);
-         
-         
-    } catch (Exception ex){
-        Log.e("Debug", "error: " + ex.getMessage(), ex);
-    }
-    
   //http post
+    InputStream is = null;
+    String result = "";
+    
     try{
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/getImages.php");
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
-            InputStream is = entity.getContent();
-    }catch(Exception e){
-            Log.e("log_tag", "Error in http connection "+e.toString());
+            is = entity.getContent();
+    }catch(Exception e1){
+            Log.e("log_tag", "Error in http connection "+e1.toString());
     }
     //convert response to string
     try{
@@ -76,13 +66,14 @@ public class ImageAdapter extends BaseAdapter{
             is.close();
      
             result=sb.toString();
-    }catch(Exception e){
-            Log.e("log_tag", "Error converting result "+e.toString());
+    }catch(Exception e2){
+            Log.e("log_tag", "Error converting result "+e2.toString());
     }
      
     //parse json data
+    JSONArray jArray = null;
     try{
-            JSONArray jArray = new JSONArray(result);
+            jArray = new JSONArray(result);
             for(int i=0;i<jArray.length();i++){
                     JSONObject json_data = jArray.getJSONObject(i);
                     Log.i("log_tag","id: "+json_data.getInt("id")+
@@ -92,9 +83,12 @@ public class ImageAdapter extends BaseAdapter{
                     );
             }
     }
-    }catch(JSONException e){
-            Log.e("log_tag", "Error parsing data "+e.toString());
+    catch(JSONException e3){
+            Log.e("log_tag", "Error parsing data "+e3.toString());
     }
+    //TODO: RETURN jArray AS A STRING ARRAY
+    return null;
+	}
     
 	int[] images = {
 			R.drawable.buds, R.drawable.cherry_34,
