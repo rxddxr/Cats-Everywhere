@@ -37,8 +37,8 @@ public class Main extends Activity implements OnClickListener {
 		case R.id.bGallery:
 			startActivity(new Intent(this, GridActivity.class));
 		
-		//case R.id.bLoginPage:
-		//	startActivity(new Intent(this, Login.class));
+		case R.id.bLoginPage:
+			startActivity(new Intent(this, Login.class));
 		}
 	}
 
