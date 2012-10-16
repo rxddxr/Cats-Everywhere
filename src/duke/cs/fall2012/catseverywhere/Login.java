@@ -37,6 +37,7 @@ public class Login extends Activity implements OnClickListener{
     	submit.setOnClickListener(this);
     }
 
+	@Override
 	public void onClick(View v) {
 		new Thread(new Runnable() {
 			@Override
@@ -63,7 +64,9 @@ public class Login extends Activity implements OnClickListener{
 
 	        // Execute HTTP Post Request
 	        httpclient.execute(httppost);
-
+	        ((MyApplication) this.getApplication()).setUser(email.toString());//set user
+	        System.out.println("successish");
+	        
 	    } catch (ClientProtocolException e) {
 	        // TODO Auto-generated catch block
 	    } catch (IOException e) {

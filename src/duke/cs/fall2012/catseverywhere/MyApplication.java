@@ -13,7 +13,7 @@ public class MyApplication extends Application {
         return myUser;
     }
 
-    public void setMyUser(String user) {
+    public void setUser(String user) {
         myUser = user;
     }
 }
