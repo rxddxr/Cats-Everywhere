@@ -105,8 +105,17 @@ public class ImageAdapter extends BaseAdapter {
 				"http://squashysquash.com/CatsEverywhere/getPictures.php");
 			httppost.setEntity(new UrlEncodedFormEntity(params));
 			HttpResponse response = httpclient.execute(httppost);
+			if (response == null) {
+				Log.d("isNull", "response");
+			}
 			InputStream is_image = response.getEntity().getContent();
+			if (is_image == null) {
+				Log.d("isNull", "is_image");
+			}
 			Drawable drawable = Drawable.createFromStream(is_image, "user_picture");
+			if (drawable == null) {
+				Log.d("isNull", "drawable");
+			}
 			images[0] = drawable;
 		} catch (ClientProtocolException e) {
 	        // TODO Auto-generated catch block
