@@ -297,6 +297,12 @@ public class ImageUpload extends Activity {
              MultipartEntity reqEntity = new MultipartEntity();
              reqEntity.addPart("uploadedFile", bin1);
              reqEntity.addPart("id", new StringBody(getId(file1)));
+             
+             //UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
+             reqEntity.addPart("owner", null);
+             reqEntity.addPart("location", null);
+             reqEntity.addPart("keywords", null);
+             
              post.setEntity(reqEntity);
              HttpResponse response = client.execute(post, localContext);
              System.out.println("PHP RESPONSE: " + response);
