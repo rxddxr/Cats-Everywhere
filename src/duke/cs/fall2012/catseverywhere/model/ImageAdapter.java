@@ -132,22 +132,18 @@ public class ImageAdapter extends BaseAdapter {
 		this.mode = mode;
 	}
 
-	@Override
 	public int getCount() {
 		return images.length;
 	}
 
-	@Override
 	public Object getItem(int position) {
 		return images[position];
 	}
 
-	@Override
 	public long getItemId(int position) {
 		return position;
 	}
 
-	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		if (mode.equalsIgnoreCase("grid")) {
 			if (view == null) {
