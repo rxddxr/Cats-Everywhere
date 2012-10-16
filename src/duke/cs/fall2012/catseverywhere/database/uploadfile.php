@@ -31,6 +31,7 @@ if (!$con)
   die('Could not connect: ' .mysqlerror());
   }
 
+echo  $target_path1;
 mysql_select_db("catseverywhere", $con);
 mysql_query("INSERT INTO photo (id, path) VALUES ('$id', '$target_path1')");
 mysql_close($con);
