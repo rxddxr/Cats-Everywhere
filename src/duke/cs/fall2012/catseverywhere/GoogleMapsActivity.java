@@ -21,6 +21,7 @@ import android.net.Uri;
 
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.MediaColumns;
 
 import android.view.Menu;
 import android.view.View;
@@ -65,7 +66,8 @@ public class GoogleMapsActivity extends MapActivity {
         final Button button = (Button) findViewById(R.id.button1);
         
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
                 // Perform action on click
             	System.out.println("HAI");
             	Intent myPhotoPicker = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -90,7 +92,8 @@ public class GoogleMapsActivity extends MapActivity {
 
         final Button findMeButton = (Button) findViewById(R.id.button_find_me);
         findMeButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
             	myMapController.animateTo(myLocListener.getCurrentGeoP());
             	myMapController.setZoom(17);
             	
@@ -101,7 +104,8 @@ public class GoogleMapsActivity extends MapActivity {
 
         final Button uploadButton = (Button) findViewById(R.id.button_upload);
         uploadButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
                 // Perform action on click
             	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
             	startActivity(imageUploadScreen);
@@ -112,7 +116,8 @@ public class GoogleMapsActivity extends MapActivity {
       
       final Button testButton = (Button) findViewById(R.id.button_test_main);
       testButton.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
+          @Override
+		public void onClick(View v) {
               // Perform action on click
           	Intent testMain= new Intent(getApplicationContext(), Main.class);
           	startActivity(testMain);
@@ -203,12 +208,12 @@ public class GoogleMapsActivity extends MapActivity {
 	}
 	
 	public String getRealPathFromURI(Uri contentUri) {
-        String [] proj 		= {MediaStore.Images.Media.DATA};
+        String [] proj 		= {MediaColumns.DATA};
         Cursor cursor 		= managedQuery( contentUri, proj, null, null,null);
         
         if (cursor == null) return null;
         
-        int column_index 	= cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        int column_index 	= cursor.getColumnIndexOrThrow(MediaColumns.DATA);
         
         cursor.moveToFirst();
 

@@ -26,8 +26,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import duke.cs.fall2012.catseverywhere.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -134,18 +132,22 @@ public class ImageAdapter extends BaseAdapter {
 		this.mode = mode;
 	}
 
+	@Override
 	public int getCount() {
 		return images.length;
 	}
 
+	@Override
 	public Object getItem(int position) {
 		return images[position];
 	}
 
+	@Override
 	public long getItemId(int position) {
 		return position;
 	}
 
+	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		if (mode.equalsIgnoreCase("grid")) {
 			if (view == null) {

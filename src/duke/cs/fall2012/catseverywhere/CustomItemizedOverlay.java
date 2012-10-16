@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
-import android.content.ClipData.Item;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 

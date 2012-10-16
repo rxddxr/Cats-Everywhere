@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.MediaColumns;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -70,6 +71,7 @@ public class ImageUpload extends Activity {
 		
 		upload.setOnClickListener(new View.OnClickListener() {
 
+			@Override
 			public void onClick(View v) {
 				if (bitmap == null) {
 					Toast.makeText(getApplicationContext(),
@@ -79,6 +81,7 @@ public class ImageUpload extends Activity {
 							"Please wait...", true);
 					//new ImageUploadTask().execute();
 					new Thread(new Runnable() {
+						@Override
 						public void run() {
 							doFileUpload(filePath);
 						}
@@ -239,13 +242,13 @@ public class ImageUpload extends Activity {
 	}
 
 	public String getPath(Uri uri) {
-		String[] projection = { MediaStore.Images.Media.DATA };
+		String[] projection = { MediaColumns.DATA };
 		Cursor cursor = managedQuery(uri, projection, null, null, null);
 		if (cursor != null) {
 			// HERE YOU WILL GET A NULLPOINTER IF CURSOR IS NULL
 			// THIS CAN BE, IF YOU USED OI FILE MANAGER FOR PICKING THE MEDIA
 			int column_index = cursor
-					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+					.getColumnIndexOrThrow(MediaColumns.DATA);
 			cursor.moveToFirst();
 			return cursor.getString(column_index);
 		} else
@@ -310,7 +313,8 @@ public class ImageUpload extends Activity {
              if (myResEntity != null) {
                  Log.i("RESPONSE",response_str);
                  runOnUiThread(new Runnable(){
-                        public void run() {
+                        @Override
+						public void run() {
                              try {
                                // ((TextView) myResEntity).setTextColor(Color.GREEN);
                                // res.setText("n Response from server : n " + response_str);
