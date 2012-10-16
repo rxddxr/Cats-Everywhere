@@ -74,15 +74,15 @@ public class ImageAdapter extends BaseAdapter{
     JSONArray jArray = null;
     try{
             jArray = new JSONArray(result);
+            String[] sArray = new String[jArray.length()];
             for(int i=0;i<jArray.length();i++){
-                    String json_data = jArray.getString(i);
-                    Log.i("log_tag","path: "+json_data);
+                    sArray[i] = jArray.getString(i);
             }
+            return sArray;
     }
     catch(JSONException e3){
             Log.e("log_tag", "Error parsing data "+e3.toString());
     }
-    //TODO: RETURN jArray AS A STRING ARRAY
     return null;
 	}
     
