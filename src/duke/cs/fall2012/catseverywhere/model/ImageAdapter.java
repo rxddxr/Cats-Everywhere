@@ -75,12 +75,8 @@ public class ImageAdapter extends BaseAdapter{
     try{
             jArray = new JSONArray(result);
             for(int i=0;i<jArray.length();i++){
-                    JSONObject json_data = jArray.getJSONObject(i);
-                    Log.i("log_tag","id: "+json_data.getInt("id")+
-                            ", name: "+json_data.getString("name")+
-                            ", sex: "+json_data.getInt("sex")+
-                            ", birthyear: "+json_data.getInt("birthyear")
-                    );
+                    String json_data = jArray.getString(i);
+                    Log.i("log_tag","path: "+json_data);
             }
     }
     catch(JSONException e3){
@@ -99,6 +95,7 @@ public class ImageAdapter extends BaseAdapter{
 			};
 	
 	public ImageAdapter(Activity act, String mode){
+		getImagesFromDb();
 		inflater = (LayoutInflater) act.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		activity = act;
 		this.mode = mode;
