@@ -23,6 +23,7 @@ echo $id;
 //$owner = $_REQUEST['owner'];
 //$locaton = $_REQUEST['location'];
 $keywords = $_REQUEST['keywords'];
+echo $keywords;
 
 //MYSQL
 $con = mysql_connect("mysql.squashysquash.com","antaressql","password");
@@ -33,6 +34,6 @@ if (!$con)
 
 echo  $target_path1;
 mysql_select_db("catseverywhere", $con);
-mysql_query("INSERT INTO photo (id, path) VALUES ('$id', '$target_path1')");
+mysql_query("INSERT INTO photo (id, path, keywords) VALUES ('$id', '$target_path1', '$keywords')");
 mysql_close($con);
 ?>
