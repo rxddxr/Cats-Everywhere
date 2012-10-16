@@ -299,9 +299,9 @@ public class ImageUpload extends Activity {
              reqEntity.addPart("id", new StringBody(getId(file1)));
              
              //UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
-             reqEntity.addPart("owner", null);
-             reqEntity.addPart("location", null);
-             reqEntity.addPart("keywords", null);
+             //reqEntity.addPart("owner", null);
+             //reqEntity.addPart("location", null);
+             //reqEntity.addPart("keywords", null);
              
              post.setEntity(reqEntity);
              HttpResponse response = client.execute(post, localContext);

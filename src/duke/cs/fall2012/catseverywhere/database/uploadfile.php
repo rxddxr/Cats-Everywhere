@@ -19,13 +19,10 @@ echo "n String Parameter send from client side : " . $user;
 //ADD TO DB
 //get db fields via POST
 $id = $_REQUEST['id'];
-$owner = $_REQUEST['owner'];
-$locaton = $_REQUEST['location'];
-$keywords = $_REQUEST['keywords'];
-
-//path for db
-$dbPath = $target_path1 + $_FILES['uploadedfile']['name'];
-echo $dbPath;
+echo $id;
+//$owner = $_REQUEST['owner'];
+//$locaton = $_REQUEST['location'];
+//$keywords = $_REQUEST['keywords'];
 
 //MYSQL
 $con = mysql_connect("mysql.squashysquash.com","antaressql","password");
@@ -35,6 +32,6 @@ if (!$con)
   }
 
 mysql_select_db("catseverywhere", $con);
-mysql_query("INSERT INTO photo (id, path, owner, location, keywords) VALUES ('$id', '$dbPath', '$owner', $location, $keywords)");
+mysql_query("INSERT INTO photo (id, path) VALUES ('$id', '$target_path1')");
 mysql_close($con);
 ?>
