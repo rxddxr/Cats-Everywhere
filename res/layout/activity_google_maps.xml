@@ -52,17 +52,19 @@
         android:id="@+id/button_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_marginTop="19dp"
+        android:layout_above="@+id/button1"
+        android:layout_marginBottom="36dp"
+        android:layout_toLeftOf="@+id/button1"
         android:text="Upload" />
 
     <Button
         android:id="@+id/button_test_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignBaseline="@+id/button_upload"
+        android:layout_alignBottom="@+id/button_upload"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_marginLeft="24dp"
         android:text="T Main" />
 
 </RelativeLayout>

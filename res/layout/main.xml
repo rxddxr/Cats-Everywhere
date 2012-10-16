@@ -19,5 +19,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/Gallery" />
+
+	<Button
+	    android:id="@+id/bLoginPage"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_alignRight="@+id/bGallery"
+	    android:layout_marginTop="49dp"
+	    android:text="Login" />
 
 </RelativeLayout>
