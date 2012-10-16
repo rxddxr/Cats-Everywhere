@@ -290,6 +290,7 @@ public class ImageUpload extends Activity {
 			MultipartEntity reqEntity = new MultipartEntity();
 			reqEntity.addPart("uploadedFile", bin1);
 			reqEntity.addPart("id", new StringBody(getId(file1)));
+			reqEntity.addPart("keywords", new StringBody(caption.getText().toString()));
 
 			// UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
 			// reqEntity.addPart("owner", null);
