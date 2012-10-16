@@ -39,6 +39,7 @@ public class Login extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
+		
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
