@@ -81,10 +81,8 @@ public class ImageUpload extends Activity {
 					new Thread(new Runnable() {
 						public void run() {
 							doFileUpload(filePath);
-
 						}
 					}).start();
-					//doFileUpload(filePath);
 				}
 			}
 		});
@@ -299,9 +297,9 @@ public class ImageUpload extends Activity {
              reqEntity.addPart("id", new StringBody(getId(file1)));
              
              //UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
-             reqEntity.addPart("owner", null);
-             reqEntity.addPart("location", null);
-             reqEntity.addPart("keywords", null);
+             //reqEntity.addPart("owner", null);
+             //reqEntity.addPart("location", null);
+             //reqEntity.addPart("keywords", null);
              
              post.setEntity(reqEntity);
              HttpResponse response = client.execute(post, localContext);
@@ -317,6 +315,7 @@ public class ImageUpload extends Activity {
                                // ((TextView) myResEntity).setTextColor(Color.GREEN);
                                // res.setText("n Response from server : n " + response_str);
                                 Toast.makeText(getApplicationContext(),"Upload Complete. Check the server uploads directory.", Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
