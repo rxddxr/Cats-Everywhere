@@ -28,7 +28,6 @@ public class Main extends Activity implements OnClickListener {
     	loginButton.setOnClickListener(this);
     }
 
-	@Override
 	public void onClick(View button) {
 		switch(button.getId()) {
 		case R.id.bPrefs:

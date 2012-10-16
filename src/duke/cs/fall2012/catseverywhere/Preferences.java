@@ -38,10 +38,8 @@ public class Preferences extends Activity implements OnClickListener {
     	submit.setOnClickListener(this);
     }
 
-	@Override
 	public void onClick(View v) {
 		new Thread(new Runnable() {
-			@Override
 			public void run() {
 				addToDatabase();
 
