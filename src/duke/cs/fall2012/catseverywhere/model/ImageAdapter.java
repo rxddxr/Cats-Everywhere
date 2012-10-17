@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +34,8 @@ import duke.cs.fall2012.catseverywhere.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -87,6 +93,7 @@ public class ImageAdapter extends BaseAdapter {
 			String[] sArray = new String[jArray.length()];
 			for (int i = 0; i < jArray.length(); i++) {
 				sArray[i] = jArray.getString(i);
+				System.out.println(sArray[i]);
 			}
 			return sArray;
 		} catch (JSONException e3) {
@@ -96,23 +103,41 @@ public class ImageAdapter extends BaseAdapter {
 	}
 
 	public void getImages(String[] paths) {
+		URL myFileUrl = null;
+		try {
+			myFileUrl = new URL("http://squashysquash.com/CatsEverywhere/" + paths[0]);
+		} catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+       }
+		try {
+            HttpURLConnection conn= (HttpURLConnection)myFileUrl.openConnection();
+            conn.setDoInput(true);
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            
+            Bitmap bmImg = BitmapFactory.decodeStream(is);
+       } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+       }
+		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("image_path", paths[0]));
-		Log.d("PATHS", paths[0]);
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
 				"http://squashysquash.com/CatsEverywhere/getPictures.php");
 			httppost.setEntity(new UrlEncodedFormEntity(params));
 			HttpResponse response = httpclient.execute(httppost);
-			if (response == null) {
-				Log.d("isNull", "response");
-			}
+			//String responseText = EntityUtils.toString(response.getEntity());
+			//System.out.println(responseText);
 			InputStream is_image = response.getEntity().getContent();
+			System.out.println(is_image);
 			if (is_image == null) {
 				Log.d("isNull", "is_image");
 			}
-			Drawable drawable = Drawable.createFromStream(is_image, "user_picture");
+			Drawable drawable = Drawable.createFromStream(is_image, null);
 			if (drawable == null) {
 				Log.d("isNull", "drawable");
 			}
@@ -135,7 +160,6 @@ public class ImageAdapter extends BaseAdapter {
 
 	public ImageAdapter(Activity act, String mode) {
 		String[] pathNames = getImagePathsFromDb();
-		Log.d("PATHS", pathNames[0]);
 		getImages(pathNames);
 		inflater = (LayoutInflater) act
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
