@@ -54,13 +54,14 @@ public class ImageUpload extends Activity {
 	private HttpEntity myResEntity;
 	private TextView tv, res;
 	private String filePath;
+	private MyApplication userAccessor;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.imageupload);
-
+		userAccessor = new MyApplication();
 		imgView = (ImageView) findViewById(R.id.ImageView);
 		upload = (Button) findViewById(R.id.Upload);
 		caption = (EditText) findViewById(R.id.Caption);
@@ -292,9 +293,10 @@ public class ImageUpload extends Activity {
 			reqEntity.addPart("id", new StringBody(getId(file1)));
 			System.out.println("keywords: " +caption.getText().toString());
 			reqEntity.addPart("keywords", new StringBody(caption.getText().toString()));
-
+			//reqEntity.addPart("owner", new StringBody(userAccessor.getUser()));
+			reqEntity.addPart("owner", new StringBody("testOwner"));
 			// UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
-			// reqEntity.addPart("owner", null);
+			
 			// reqEntity.addPart("location", null);
 			// reqEntity.addPart("keywords", null);
 

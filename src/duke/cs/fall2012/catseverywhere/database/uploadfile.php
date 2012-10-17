@@ -34,6 +34,6 @@ if (!$con)
 
 echo  $target_path1;
 mysql_select_db("catseverywhere", $con);
-mysql_query("INSERT INTO photo (id, path, keywords) VALUES ('$id', '$target_path1', '$keywords')");
+mysql_query("INSERT INTO photo (id, path, keywords) VALUES ('$id', '$target_path1', 'keywords')");
 mysql_close($con);
 ?>
