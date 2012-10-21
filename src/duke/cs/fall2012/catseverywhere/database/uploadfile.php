@@ -5,7 +5,7 @@ $target_path1 = "images/";
 Result is "uploads/filename.extension" */
 $id = $_REQUEST['id'];
 echo $id;
-$target_path1 = $target_path1 . $id;
+$target_path1 = $target_path1 . $id . '_';
 $target_path1 = $target_path1 . basename( $_FILES['uploadedFile']['name']);
 
 echo $target_path1;
