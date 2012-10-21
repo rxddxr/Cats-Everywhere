@@ -25,8 +25,8 @@ public class SplashActivity extends Activity {
     			{
         			e.printStackTrace();
     			}finally{
-    				Intent googleMapScreen = new Intent(getApplicationContext(), GoogleMapsActivity.class);
-    				startActivity(googleMapScreen);
+    				Intent login = new Intent(getApplicationContext(), Login.class);
+    				startActivity(login);
     			}
         	}
         };

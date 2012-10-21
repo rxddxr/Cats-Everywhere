@@ -18,7 +18,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,8 +31,9 @@ import android.widget.EditText;
 
 public class Login extends Activity implements OnClickListener{
 	
-	EditText email, password;
-	Button submit;
+	EditText email, password, name;
+	Button loginButton;
+	Button createAccountButton;
 	MyApplication myApp;
 	
     public void onCreate(Bundle savedInstanceState) {
@@ -41,19 +45,36 @@ public class Login extends Activity implements OnClickListener{
 	public void initialize() {
     	email = (EditText) findViewById(R.id.etEmail1);
     	password = (EditText) findViewById(R.id.etPassword1);
-    	submit = (Button) findViewById(R.id.bLogin);
-    	submit.setOnClickListener(this);
+    	name = (EditText) findViewById(R.id.etName1);
+    	loginButton = (Button) findViewById(R.id.bLogin);
+    	loginButton.setOnClickListener(this);
+    	createAccountButton = (Button) findViewById(R.id.bCreateAccount);
+    	createAccountButton.setOnClickListener(this);
     	myApp = (MyApplication) this.getApplication();
     }
 
 	public void onClick(View v) {
-		new Thread(new Runnable() {
-			public void run() {
-				verifyCredentials();
+		
+		switch(v.getId()) {
+		
+		case R.id.bLogin:
+			new Thread(new Runnable() {
+				public void run() {
+					verifyCredentials();
 
-			}
-		}).start();
+				}
+			}).start();
+			
+		case R.id.bCreateAccount:
+			new Thread(new Runnable() {
+				public void run() {
+					addToDatabase();
+
+				}
+			}).start();
+		}
 	}
+		
 	
 	public void verifyCredentials() {
 		//Add data
@@ -95,11 +116,36 @@ public class Login extends Activity implements OnClickListener{
 		if (result.trim().equals("true")) {
 			myApp.setUser(email.toString());//set user
 		    System.out.println("successish");
+		    startActivity(new Intent(this, GoogleMapsActivity.class));
 		}
 		else {
 			System.out.println("INCORRECT PASSWORD");
 		}
 	        
+	    } catch (ClientProtocolException e) {
+	        // TODO Auto-generated catch block
+	    } catch (IOException e) {
+	        // TODO Auto-generated catch block
+	    }
+	}
+	
+	public void addToDatabase() {
+		//Add data
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
+        nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
+        nameValuePairs.add(new BasicNameValuePair("name", name.getText().toString()));
+
+	    try {
+	    	HttpClient httpclient = new DefaultHttpClient();
+		    HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/addEntry.php");
+	        
+	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+	        // Execute HTTP Post Request
+	        httpclient.execute(httppost);
+	        startActivity(new Intent(this, GoogleMapsActivity.class));
+
 	    } catch (ClientProtocolException e) {
 	        // TODO Auto-generated catch block
 	    } catch (IOException e) {

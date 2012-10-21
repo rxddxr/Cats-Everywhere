@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class Main extends Activity implements OnClickListener {
 
+	//nav bar
 	private Button prefsButton, galleryButton, loginButton;
 	
     @Override
@@ -21,6 +22,8 @@ public class Main extends Activity implements OnClickListener {
     }
     
     public void initialize() {
+    	
+    	//nav bar
     	prefsButton = (Button) findViewById(R.id.bPrefs);
     	prefsButton.setOnClickListener(this);
     	galleryButton = (Button) findViewById(R.id.bGallery);
@@ -30,6 +33,7 @@ public class Main extends Activity implements OnClickListener {
     }
 
 	public void onClick(View button) {
+		//nav bar
 		switch(button.getId()) {
 		case R.id.bPrefs:
 			startActivity(new Intent(this, Preferences.class));
