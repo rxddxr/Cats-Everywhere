@@ -20,6 +20,8 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -39,6 +41,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -46,7 +49,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ImageUpload extends Activity {
+public class ImageUpload extends Activity implements OnClickListener{
 	private static final int PICK_IMAGE = 1;
 	private static final int CAMERA_DATA = 0;
 	private ImageView imgView;
@@ -60,6 +63,10 @@ public class ImageUpload extends Activity {
 	private String filePath;
 	private Uri mCapturedImageURI;
 	private MyApplication userAccessor;
+	
+	//nav bar
+	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -74,7 +81,8 @@ public class ImageUpload extends Activity {
 
 		tv = (TextView) findViewById(R.id.tv);
 		res = (TextView) findViewById(R.id.res);
-
+		initialize();
+		
 		upload.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -109,6 +117,18 @@ public class ImageUpload extends Activity {
 		});
 
 	}
+	
+	public void initialize() {
+		//nav bar
+    	uploadButtonNav = (Button) findViewById(R.id.bUploadUploadNav);
+    	uploadButtonNav.setOnClickListener(this);
+    	galleryButtonNav = (Button) findViewById(R.id.bUploadGalleryNav);
+    	galleryButtonNav.setOnClickListener(this);
+    	mapsButtonNav = (Button) findViewById(R.id.bUploadMapsNav);
+    	mapsButtonNav.setOnClickListener(this);
+    	prefButtonNav = (Button) findViewById(R.id.bUploadPrefNav);
+    	prefButtonNav.setOnClickListener(this);
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,7 +159,7 @@ public class ImageUpload extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
@@ -154,11 +174,12 @@ public class ImageUpload extends Activity {
 
 					// MEDIA GALLERY
 					String selectedImagePath = getPath(selectedImageUri);
-					System.out.println("IMAGE PATH: " + selectedImagePath);
 					if (selectedImagePath != null) {
 						filePath = selectedImagePath;
+						System.out.println("1");
 					} else if (filemanagerstring != null) {
 						filePath = filemanagerstring;
+						System.out.println("2");
 					} else {
 						Toast.makeText(getApplicationContext(), "Unknown path",
 								Toast.LENGTH_LONG).show();
@@ -179,7 +200,6 @@ public class ImageUpload extends Activity {
 			break;
 		case CAMERA_DATA:
 			if (resultCode == Activity.RESULT_OK) {
-				System.out.println("WOOT");
 
 				try {					
 					String selectedImagePath = getPath(mCapturedImageURI);
@@ -385,5 +405,24 @@ public class ImageUpload extends Activity {
 		 * create unique id for each file
 		 */
 		return Integer.toString(photo.hashCode());
+	}
+	
+	public void onClick(View v) {
+		switch(v.getId()) {
+
+		//navbar
+		case R.id.bUploadUploadNav:
+			startActivity(new Intent(this, ImageUpload.class));
+			break;
+		case R.id.bUploadGalleryNav:
+			startActivity(new Intent(this, GridActivity.class));
+			break;
+		case R.id.bUploadMapsNav:
+			startActivity(new Intent(this, GoogleMapsActivity.class));
+			break;
+		case R.id.bUploadPrefNav:
+			startActivity(new Intent(this, Preferences.class));
+			break;
+		}
 	}
 }

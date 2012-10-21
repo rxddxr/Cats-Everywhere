@@ -11,7 +11,7 @@ import android.widget.Button;
 public class Main extends Activity implements OnClickListener {
 
 	//nav bar
-	private Button prefsButton, galleryButton, loginButton;
+	private Button prefsButton, galleryButton, uploadButton, mapsButton;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,10 @@ public class Main extends Activity implements OnClickListener {
     	prefsButton.setOnClickListener(this);
     	galleryButton = (Button) findViewById(R.id.bGallery);
     	galleryButton.setOnClickListener(this);
-    	loginButton = (Button) findViewById(R.id.bLoginPage);
-    	loginButton.setOnClickListener(this);
+    	uploadButton = (Button) findViewById(R.id.bLoginPage);
+    	uploadButton.setOnClickListener(this);
+    	uploadButton = (Button) findViewById(R.id.bLoginPage);
+    	uploadButton.setOnClickListener(this);
     }
 
 	public void onClick(View button) {
@@ -40,9 +42,10 @@ public class Main extends Activity implements OnClickListener {
 			break;
 		case R.id.bGallery:
 			startActivity(new Intent(this, GridActivity.class));
-		
+			break;
 		case R.id.bLoginPage:
 			startActivity(new Intent(this, Login.class));
+			break;
 		}
 	}
 
