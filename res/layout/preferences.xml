@@ -1,6 +1,6 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -9,12 +9,15 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:text="@string/email" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
         android:ems="10"
         android:hint="@string/enterMail"
         android:inputType="textEmailAddress" />
@@ -23,12 +26,16 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etEmail"
         android:text="@string/pw" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
         android:ems="10"
         android:hint="@string/enterPw"
         android:inputType="textPassword" />
@@ -37,12 +44,16 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etPassword"
         android:text="@string/name" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView3"
         android:ems="10"
         android:hint="@string/enterName"
         android:inputType="textPersonName" />
@@ -51,6 +62,44 @@
         android:id="@+id/bSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etName"
         android:text="@string/submit" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/bPrefUploadNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="16dp"
+        android:text="upload" />
+
+    <Button
+        android:id="@+id/bPrefGalleryNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bPrefUploadNav"
+        android:layout_alignBottom="@+id/bPrefUploadNav"
+        android:layout_toRightOf="@+id/bPrefUploadNav"
+        android:text="gallery" />
+
+    <Button
+        android:id="@+id/bPrefMapsNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bPrefGalleryNav"
+        android:layout_alignBottom="@+id/bPrefGalleryNav"
+        android:layout_toRightOf="@+id/bPrefGalleryNav"
+        android:text="maps" />
+
+    <Button
+        android:id="@+id/bPrefPrefNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bPrefMapsNav"
+        android:layout_alignBottom="@+id/bPrefMapsNav"
+        android:layout_toRightOf="@+id/bPrefMapsNav"
+        android:text="pref" />
+
+</RelativeLayout>

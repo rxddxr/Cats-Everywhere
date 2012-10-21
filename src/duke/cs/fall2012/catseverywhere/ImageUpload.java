@@ -20,6 +20,8 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -38,13 +40,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ImageUpload extends Activity {
+public class ImageUpload extends Activity implements OnClickListener{
 	private static final int PICK_IMAGE = 1;
 	private ImageView imgView;
 	private Button upload;
@@ -55,6 +58,10 @@ public class ImageUpload extends Activity {
 	private TextView tv, res;
 	private String filePath;
 	private MyApplication userAccessor;
+	
+	//nav bar
+	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -87,7 +94,20 @@ public class ImageUpload extends Activity {
 				}
 			}
 		});
+		initialize();
 
+	}
+	
+	public void initialize() {
+		//nav bar
+    	uploadButtonNav = (Button) findViewById(R.id.bUploadUploadNav);
+    	uploadButtonNav.setOnClickListener(this);
+    	galleryButtonNav = (Button) findViewById(R.id.bUploadGalleryNav);
+    	galleryButtonNav.setOnClickListener(this);
+    	mapsButtonNav = (Button) findViewById(R.id.bUploadMapsNav);
+    	mapsButtonNav.setOnClickListener(this);
+    	prefButtonNav = (Button) findViewById(R.id.bUploadPrefNav);
+    	prefButtonNav.setOnClickListener(this);
 	}
 
 	@Override
@@ -337,5 +357,24 @@ public class ImageUpload extends Activity {
 		 * create unique id for each file
 		 */
 		return Integer.toString(photo.hashCode());
+	}
+	
+	public void onClick(View v) {
+		switch(v.getId()) {
+
+		//navbar
+		case R.id.bUploadUploadNav:
+			startActivity(new Intent(this, ImageUpload.class));
+			break;
+		case R.id.bUploadGalleryNav:
+			startActivity(new Intent(this, GridActivity.class));
+			break;
+		case R.id.bUploadMapsNav:
+			startActivity(new Intent(this, GoogleMapsActivity.class));
+			break;
+		case R.id.bUploadPrefNav:
+			startActivity(new Intent(this, Preferences.class));
+			break;
+		}
 	}
 }

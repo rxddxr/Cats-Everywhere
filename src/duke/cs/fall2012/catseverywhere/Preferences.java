@@ -11,7 +11,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,6 +25,10 @@ public class Preferences extends Activity implements OnClickListener {
 
 	EditText email, password, name;
 	Button submit;
+	
+	//nav bar
+	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,15 +43,44 @@ public class Preferences extends Activity implements OnClickListener {
     	name = (EditText) findViewById(R.id.etName);
     	submit = (Button) findViewById(R.id.bSubmit);
     	submit.setOnClickListener(this);
+    	
+    	//nav bar
+    	uploadButtonNav = (Button) findViewById(R.id.bPrefUploadNav);
+    	uploadButtonNav.setOnClickListener(this);
+    	galleryButtonNav = (Button) findViewById(R.id.bPrefGalleryNav);
+    	galleryButtonNav.setOnClickListener(this);
+    	mapsButtonNav = (Button) findViewById(R.id.bPrefMapsNav);
+    	mapsButtonNav.setOnClickListener(this);
+    	prefButtonNav = (Button) findViewById(R.id.bPrefPrefNav);
+    	prefButtonNav.setOnClickListener(this);
+    	
     }
 
 	public void onClick(View v) {
-		new Thread(new Runnable() {
-			public void run() {
-				addToDatabase();
-
-			}
-		}).start();
+		switch(v.getId()) {
+		
+		case R.id.bSubmit:
+			new Thread(new Runnable() {
+				public void run() {
+					addToDatabase();
+				}
+			}).start();
+			break;
+		
+		//navbar
+		case R.id.bPrefUploadNav:
+			startActivity(new Intent(this, ImageUpload.class));
+			break;
+		case R.id.bPrefGalleryNav:
+			startActivity(new Intent(this, GridActivity.class));
+			break;
+		case R.id.bPrefMapsNav:
+			startActivity(new Intent(this, GoogleMapsActivity.class));
+			break;
+		case R.id.bPrefPrefNav:
+			startActivity(new Intent(this, Preferences.class));
+			break;
+		}
 	}
 	
 	public void addToDatabase() {
