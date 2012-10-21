@@ -56,20 +56,18 @@ public class Login extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		
 		switch(v.getId()) {
-		
 		case R.id.bLogin:
 			new Thread(new Runnable() {
 				public void run() {
 					verifyCredentials();
-
 				}
 			}).start();
+			break;
 			
 		case R.id.bCreateAccount:
 			new Thread(new Runnable() {
 				public void run() {
 					addToDatabase();
-
 				}
 			}).start();
 		}
