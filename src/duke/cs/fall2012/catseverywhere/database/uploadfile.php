@@ -3,7 +3,11 @@
 $target_path1 = "images/";
 /* Add the original filename to our target path.
 Result is "uploads/filename.extension" */
+$id = $_REQUEST['id'];
+echo $id;
+$target_path1 = $target_path1 . $id;
 $target_path1 = $target_path1 . basename( $_FILES['uploadedFile']['name']);
+
 echo $target_path1;
 if(move_uploaded_file($_FILES['uploadedFile']['tmp_name'], $target_path1)) {
     echo "The first file ".  basename( $_FILES['uploadedfile']['name']).
@@ -18,8 +22,7 @@ echo "n String Parameter send from client side : " . $user;
 
 //ADD TO DB
 //get db fields via POST
-$id = $_REQUEST['id'];
-echo $id;
+
 //$owner = $_REQUEST['owner'];
 //$locaton = $_REQUEST['location'];
 $keywords = $_REQUEST['keywords'];
