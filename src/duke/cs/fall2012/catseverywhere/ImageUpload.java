@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -40,20 +41,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ImageUpload extends Activity {
 	private static final int PICK_IMAGE = 1;
+	private static final int CAMERA_DATA = 0;
 	private ImageView imgView;
 	private Button upload;
+	private ImageButton camera;
 	private EditText caption;
 	private Bitmap bitmap;
 	private ProgressDialog dialog;
 	private HttpEntity myResEntity;
 	private TextView tv, res;
 	private String filePath;
+	private Uri mCapturedImageURI;
 	private MyApplication userAccessor;
 
 	/** Called when the activity is first created. */
@@ -64,6 +69,7 @@ public class ImageUpload extends Activity {
 		userAccessor = new MyApplication();
 		imgView = (ImageView) findViewById(R.id.ImageView);
 		upload = (Button) findViewById(R.id.Upload);
+		camera = (ImageButton) findViewById(R.id.camera);
 		caption = (EditText) findViewById(R.id.Caption);
 
 		tv = (TextView) findViewById(R.id.tv);
@@ -85,6 +91,20 @@ public class ImageUpload extends Activity {
 						}
 					}).start();
 				}
+			}
+		});
+		
+		camera.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				String fileName = "temp.jpg";  
+		        ContentValues values = new ContentValues();  
+		        values.put(MediaStore.Images.Media.TITLE, fileName);  
+		        mCapturedImageURI = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);  
+
+		        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);  
+		        intent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);  
+		        startActivityForResult(intent, CAMERA_DATA);
 			}
 		});
 
@@ -144,6 +164,34 @@ public class ImageUpload extends Activity {
 								Toast.LENGTH_LONG).show();
 						Log.e("Bitmap", "Unknown path");
 					}
+
+					if (filePath != null) {
+						decodeFile(filePath);
+					} else {
+						bitmap = null;
+					}
+				} catch (Exception e) {
+					Toast.makeText(getApplicationContext(), "Internal error",
+							Toast.LENGTH_LONG).show();
+					Log.e(e.getClass().getName(), e.getMessage(), e);
+				}
+			}
+			break;
+		case CAMERA_DATA:
+			if (resultCode == Activity.RESULT_OK) {
+				System.out.println("WOOT");
+
+				try {					
+					String selectedImagePath = getPath(mCapturedImageURI);
+
+					if (selectedImagePath != null) {
+						filePath = selectedImagePath;
+					} else {
+						Toast.makeText(getApplicationContext(), "Unknown path",
+								Toast.LENGTH_LONG).show();
+						Log.e("Bitmap", "Unknown path");
+					}
+					System.out.println("IMAGE PATH: " + selectedImagePath);
 
 					if (filePath != null) {
 						decodeFile(filePath);
