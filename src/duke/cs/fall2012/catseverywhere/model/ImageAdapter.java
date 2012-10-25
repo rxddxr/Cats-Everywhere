@@ -53,13 +53,17 @@ public class ImageAdapter extends BaseAdapter {
 	private Activity activity;
 	private Drawable[] images;
 	private String mode = "";
+	InputStream is;
 
 	public String[] getImagePathsFromDb() {
 		// UPDATE TO PULL FROM DB
 		// http post
-		InputStream is = null;
 		String result = "";
-
+		new Thread(new Runnable() {
+			public void run() {
+				getPaths();
+			}
+		}).start();
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
@@ -100,6 +104,19 @@ public class ImageAdapter extends BaseAdapter {
 			Log.e("log_tag", "Error parsing data " + e3.toString());
 		}
 		return null;
+	}
+	
+	private void getPaths() {
+		try {
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://squashysquash.com/CatsEverywhere/getImages.php");
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		} catch (Exception e1) {
+			Log.e("log_tag", "Error in http connection " + e1.toString());
+		}
 	}
 
 	public void getImages(String[] paths) {
