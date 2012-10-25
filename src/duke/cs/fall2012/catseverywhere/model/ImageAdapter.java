@@ -51,7 +51,7 @@ public class ImageAdapter extends BaseAdapter {
 
 	private static LayoutInflater inflater = null;
 	private Activity activity;
-	private Drawable[] images = new Drawable[1];
+	private ArrayList<Drawable> images = new ArrayList<Drawable>();
 	private String mode = "";
 	InputStream is;
 
@@ -123,15 +123,17 @@ public class ImageAdapter extends BaseAdapter {
 	{
 		URL url;
 		try {
-			url = new URL("http://squashysquash.com/CatsEverywhere/" + paths[0]);
-			System.out.println("Trying to get image: " + url);
-			InputStream content = (InputStream) url.getContent();
-		    Drawable d = Drawable.createFromStream(content , "src");
-		    if(d == null)
-		    {
-		    	System.out.println("Image is null");
-		    }
-		    images[0] = d;
+			for(String tempPath: paths)
+			{
+				url = new URL("http://squashysquash.com/CatsEverywhere/" + tempPath);
+				//System.out.println("Trying to get image: " + url);
+				InputStream content = (InputStream) url.getContent();
+			    Drawable d = Drawable.createFromStream(content , "src");
+			    images.add(d);
+			}
+			
+		   
+		    
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -183,7 +185,7 @@ public class ImageAdapter extends BaseAdapter {
 			if (drawable == null) {
 				Log.d("isNull", "drawable");
 			}
-			images[0] = drawable;
+			images.add(drawable);
 		} catch (ClientProtocolException e) {
 	        // TODO Auto-generated catch block
 	    } catch (IOException e) {
@@ -211,11 +213,11 @@ public class ImageAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
-		return images.length;
+		return images.size();
 	}
 
 	public Object getItem(int position) {
-		return images[position];
+		return images.get(position);
 	}
 
 	public long getItemId(int position) {
@@ -228,13 +230,13 @@ public class ImageAdapter extends BaseAdapter {
 				view = inflater.inflate(R.layout.each_image, null);
 			}
 			ImageView iv = (ImageView) view.findViewById(R.id.imageView);
-			iv.setImageDrawable(images[position]);
+			iv.setImageDrawable(images.get(position));
 		} else if (mode.equalsIgnoreCase("gallery")) {
 			if (view == null) {
 				view = inflater.inflate(R.layout.each_image_gallery, null);
 			}
 			ImageView iv = (ImageView) view.findViewById(R.id.imageView);
-			iv.setImageDrawable(images[position]);
+			iv.setImageDrawable(images.get(position));
 		}
 		return view;
 	}
