@@ -51,7 +51,7 @@ public class ImageAdapter extends BaseAdapter {
 
 	private static LayoutInflater inflater = null;
 	private Activity activity;
-	private Drawable[] images;
+	private Drawable[] images = new Drawable[1];
 	private String mode = "";
 	InputStream is;
 
@@ -119,6 +119,28 @@ public class ImageAdapter extends BaseAdapter {
 		}
 	}
 
+	public void getImagesFromUrls(String[] paths)
+	{
+		URL url;
+		try {
+			url = new URL("http://squashysquash.com/CatsEverywhere/" + paths[0]);
+			System.out.println("Trying to get image: " + url);
+			InputStream content = (InputStream) url.getContent();
+		    Drawable d = Drawable.createFromStream(content , "src");
+		    if(d == null)
+		    {
+		    	System.out.println("Image is null");
+		    }
+		    images[0] = d;
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	}
 	public void getImages(String[] paths) {
 		URL myFileUrl = null;
 		try {
@@ -151,10 +173,13 @@ public class ImageAdapter extends BaseAdapter {
 			//System.out.println(responseText);
 			InputStream is_image = response.getEntity().getContent();
 			System.out.println(is_image);
+			HttpEntity myEntity = response.getEntity();
+			String myPhpResponse = EntityUtils.toString(myEntity);
+			System.out.println("PHP RESPONSE: " + myPhpResponse);
 			if (is_image == null) {
 				Log.d("isNull", "is_image");
 			}
-			Drawable drawable = Drawable.createFromStream(is_image, null);
+			Drawable drawable = Drawable.createFromStream(is_image,"string");
 			if (drawable == null) {
 				Log.d("isNull", "drawable");
 			}
@@ -177,7 +202,8 @@ public class ImageAdapter extends BaseAdapter {
 
 	public ImageAdapter(Activity act, String mode) {
 		String[] pathNames = getImagePathsFromDb();
-		getImages(pathNames);
+		getImagesFromUrls(pathNames);
+		//getImages(pathNames);
 		inflater = (LayoutInflater) act
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		activity = act;
