@@ -28,6 +28,7 @@ public class GridActivity extends Activity {
         
         grid.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,long id) {
 				Intent i = new Intent(GridActivity.this, GalleryActivity.class);
 				i.putExtra("selectedIntex", pos);

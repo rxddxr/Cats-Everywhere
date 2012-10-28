@@ -34,6 +34,7 @@ public class Main extends Activity implements OnClickListener {
     	uploadButton.setOnClickListener(this);
     }
 
+	@Override
 	public void onClick(View button) {
 		//nav bar
 		switch(button.getId()) {

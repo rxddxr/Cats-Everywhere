@@ -49,7 +49,8 @@ public class GalleryActivity extends Activity implements OnClickListener{
     	prefButtonNav.setOnClickListener(this);
     }
     
-    public void onClick(View v) {
+    @Override
+	public void onClick(View v) {
 		switch(v.getId()) {
 
 		//navbar

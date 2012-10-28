@@ -16,20 +16,12 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import duke.cs.fall2012.catseverywhere.R;
 
 import android.app.Activity;
@@ -60,6 +52,7 @@ public class ImageAdapter extends BaseAdapter {
 		// http post
 		String result = "";
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				getPaths();
 			}
@@ -212,18 +205,22 @@ public class ImageAdapter extends BaseAdapter {
 		this.mode = mode;
 	}
 
+	@Override
 	public int getCount() {
 		return images.size();
 	}
 
+	@Override
 	public Object getItem(int position) {
 		return images.get(position);
 	}
 
+	@Override
 	public long getItemId(int position) {
 		return position;
 	}
 
+	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		if (mode.equalsIgnoreCase("grid")) {
 			if (view == null) {

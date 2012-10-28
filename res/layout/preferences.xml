@@ -66,14 +66,15 @@
         android:layout_below="@+id/etName"
         android:text="@string/submit" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bPrefUploadNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1.0"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="16dp"
-        android:text="upload" />
+        android:src="@drawable/upload_button" />
 
     <Button
         android:id="@+id/bPrefGalleryNav"

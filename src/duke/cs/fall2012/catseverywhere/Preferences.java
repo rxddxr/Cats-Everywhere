@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class Preferences extends Activity implements OnClickListener {
 
@@ -27,7 +28,8 @@ public class Preferences extends Activity implements OnClickListener {
 	Button submit;
 	
 	//nav bar
-	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private Button galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav;
 	
 	
     @Override
@@ -45,7 +47,7 @@ public class Preferences extends Activity implements OnClickListener {
     	submit.setOnClickListener(this);
     	
     	//nav bar
-    	uploadButtonNav = (Button) findViewById(R.id.bPrefUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bPrefUploadNav);
     	uploadButtonNav.setOnClickListener(this);
     	galleryButtonNav = (Button) findViewById(R.id.bPrefGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
@@ -56,11 +58,13 @@ public class Preferences extends Activity implements OnClickListener {
     	
     }
 
+	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		
 		case R.id.bSubmit:
 			new Thread(new Runnable() {
+				@Override
 				public void run() {
 					addToDatabase();
 				}
