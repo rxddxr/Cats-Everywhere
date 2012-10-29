@@ -28,9 +28,7 @@ public class Preferences extends Activity implements OnClickListener {
 	Button submit;
 	
 	//nav bar
-	private Button galleryButtonNav, mapsButtonNav, prefButtonNav;
-	private ImageButton uploadButtonNav;
-	
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,11 +47,11 @@ public class Preferences extends Activity implements OnClickListener {
     	//nav bar
     	uploadButtonNav = (ImageButton) findViewById(R.id.bPrefUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (Button) findViewById(R.id.bPrefGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bPrefGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (Button) findViewById(R.id.bPrefMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bPrefMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (Button) findViewById(R.id.bPrefPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bPrefPrefNav);
     	prefButtonNav.setOnClickListener(this);
     	
     }

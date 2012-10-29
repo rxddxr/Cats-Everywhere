@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Gallery;
+import android.widget.ImageButton;
 
 public class GalleryActivity extends Activity implements OnClickListener{
 	
@@ -19,7 +20,7 @@ public class GalleryActivity extends Activity implements OnClickListener{
 	ImageAdapter adapter = null;
 	
 	//nav bar
-	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
 	
     /** Called when the activity is first created. */
@@ -39,13 +40,13 @@ public class GalleryActivity extends Activity implements OnClickListener{
     
     public void initialize() {
     	//nav bar
-    	uploadButtonNav = (Button) findViewById(R.id.bGalleryUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bGalleryUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (Button) findViewById(R.id.bGalleryGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bGalleryGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (Button) findViewById(R.id.bGalleryMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bGalleryMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (Button) findViewById(R.id.bGalleryPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bGalleryPrefNav);
     	prefButtonNav.setOnClickListener(this);
     }
     

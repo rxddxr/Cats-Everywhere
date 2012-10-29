@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class GoogleMapsActivity extends MapActivity implements OnClickListener{
@@ -50,7 +51,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 	private final int MAX_ICON_HEIGHT = 60;
 	
 	//nav bar
-	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
 	
 	
@@ -137,13 +138,13 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     
     public void initialize() {
     	//nav bar
-    	uploadButtonNav = (Button) findViewById(R.id.bMapsUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bMapsUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (Button) findViewById(R.id.bMapsGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bMapsGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (Button) findViewById(R.id.bMapsMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bMapsMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (Button) findViewById(R.id.bMapsPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bMapsPrefNav);
     	prefButtonNav.setOnClickListener(this);
     }
     

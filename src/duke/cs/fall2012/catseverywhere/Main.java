@@ -30,8 +30,8 @@ public class Main extends Activity implements OnClickListener {
     	galleryButton.setOnClickListener(this);
     	uploadButton = (Button) findViewById(R.id.bLoginPage);
     	uploadButton.setOnClickListener(this);
-    	uploadButton = (Button) findViewById(R.id.bLoginPage);
-    	uploadButton.setOnClickListener(this);
+    	mapsButton = (Button) findViewById(R.id.bLoginPage);
+    	mapsButton.setOnClickListener(this);
     }
 
 	@Override

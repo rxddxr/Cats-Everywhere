@@ -64,7 +64,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private MyApplication userAccessor;
 	
 	//nav bar
-	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
 
 	/** Called when the activity is first created. */
@@ -122,13 +122,13 @@ public class ImageUpload extends Activity implements OnClickListener{
 	
 	public void initialize() {
 		//nav bar
-    	uploadButtonNav = (Button) findViewById(R.id.bUploadUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bUploadUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (Button) findViewById(R.id.bUploadGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bUploadGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (Button) findViewById(R.id.bUploadMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bUploadMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (Button) findViewById(R.id.bUploadPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bUploadPrefNav);
     	prefButtonNav.setOnClickListener(this);
 	}
 
