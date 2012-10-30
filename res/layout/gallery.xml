@@ -14,37 +14,37 @@
         android:layout_alignParentTop="true"
         android:layout_weight="4.85" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bGalleryUploadNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/bGalleryGalleryNav"
-        android:text="upload" />
+        android:src="@drawable/upload_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bGalleryPrefNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="pref" />
+        android:src="@drawable/pref_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bGalleryMapsNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/bGalleryPrefNav"
-        android:text="maps" />
+        android:src="@drawable/maps_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bGalleryGalleryNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/bGalleryMapsNav"
-        android:text="gallery" />
+        android:src="@drawable/gallery_button"/>
 
 </RelativeLayout>

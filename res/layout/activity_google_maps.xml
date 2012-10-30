@@ -21,12 +21,6 @@
         android:enabled="true" />
 
     <Button
-        android:id="@+id/button_img_selector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="IMG Select" />
-
-    <Button
         android:id="@+id/button_test_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,63 +28,67 @@
         android:layout_marginLeft="24dp"
         android:text="T Main" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_test_main"
-        android:layout_marginTop="31dp"
-        android:layout_toRightOf="@+id/button_test_main"
-        android:text="Find Pic" />
-
-    <Button
+    <ImageButton
         android:id="@+id/bMapsUploadNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="31dp"
-        android:text="upload" />
+        android:layout_marginBottom="71dp"
+        android:src="@drawable/upload_button" />
 
-    <Button
-        android:id="@+id/button_find_me"
+    <ImageButton
+        android:id="@+id/bMapsGalleryNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:text="Find me" />
+        android:layout_above="@+id/bMapsUploadNav"
+        android:layout_toRightOf="@+id/bMapsUploadNav"
+        android:src="@drawable/gallery_button" />
+
+    <ImageButton
+        android:id="@+id/bMapsMapsNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bMapsUploadNav"
+        android:layout_toRightOf="@+id/bMapsGalleryNav"
+        android:src="@drawable/maps_button" />
 
     <Button
         android:id="@+id/button_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/textView1"
         android:text="Upload" />
 
     <Button
-        android:id="@+id/bMapsGalleryNav"
+        android:id="@+id/button_find_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/bMapsUploadNav"
-        android:layout_alignBottom="@+id/bMapsUploadNav"
-        android:layout_toRightOf="@+id/button_find_me"
-        android:text="gallery" />
+        android:layout_below="@+id/button_upload"
+        android:layout_toRightOf="@+id/button_upload"
+        android:text="Find me" />
 
-    <Button
-        android:id="@+id/bMapsMapsNav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/bMapsGalleryNav"
-        android:layout_alignBottom="@+id/bMapsGalleryNav"
-        android:layout_toRightOf="@+id/bMapsGalleryNav"
-        android:text="maps" />
-
-    <Button
+    <ImageButton
         android:id="@+id/bMapsPrefNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/bMapsMapsNav"
-        android:layout_alignBottom="@+id/bMapsMapsNav"
-        android:layout_alignRight="@+id/button1"
-        android:text="pref" />
+        android:layout_above="@+id/bMapsUploadNav"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/pref_button" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bMapsUploadNav"
+        android:layout_below="@+id/button_find_me"
+        android:text="Find Pic" />
+
+    <Button
+        android:id="@+id/button_img_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_test_main"
+        android:layout_below="@+id/button_find_me"
+        android:text="IMG Select" />
 
 </RelativeLayout>

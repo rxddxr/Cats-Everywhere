@@ -22,13 +22,13 @@ import android.media.ExifInterface;
 import android.net.Uri;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.provider.MediaStore.MediaColumns;
 
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class GoogleMapsActivity extends MapActivity implements OnClickListener{
@@ -51,7 +51,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 	private final int MAX_ICON_HEIGHT = 60;
 	
 	//nav bar
-	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
 	
 	
@@ -72,6 +72,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         final Button button = (Button) findViewById(R.id.button1);
         
         button.setOnClickListener(new View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
                 // Perform action on click
             	System.out.println("HAI");
@@ -97,6 +98,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 
         final Button findMeButton = (Button) findViewById(R.id.button_find_me);
         findMeButton.setOnClickListener(new View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
             	myMapController.animateTo(myLocListener.getCurrentGeoP());
             	myMapController.setZoom(17);
@@ -108,6 +110,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 
         final Button uploadButton = (Button) findViewById(R.id.button_upload);
         uploadButton.setOnClickListener(new View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
                 // Perform action on click
             	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
@@ -119,6 +122,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
       
       final Button testButton = (Button) findViewById(R.id.button_test_main);
       testButton.setOnClickListener(new View.OnClickListener() {
+		@Override
 		public void onClick(View v) {
               // Perform action on click
           	Intent testMain= new Intent(getApplicationContext(), Main.class);
@@ -134,13 +138,13 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     
     public void initialize() {
     	//nav bar
-    	uploadButtonNav = (Button) findViewById(R.id.bMapsUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bMapsUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (Button) findViewById(R.id.bMapsGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bMapsGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (Button) findViewById(R.id.bMapsMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bMapsMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (Button) findViewById(R.id.bMapsPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bMapsPrefNav);
     	prefButtonNav.setOnClickListener(this);
     }
     
@@ -234,6 +238,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         return cursor.getString(column_index);
 	}
 	
+	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		

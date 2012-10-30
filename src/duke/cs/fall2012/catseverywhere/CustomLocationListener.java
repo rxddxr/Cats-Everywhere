@@ -18,6 +18,7 @@ public class CustomLocationListener implements LocationListener {
 		myGeoPoint = new GeoPoint(0,0);
 	}
 
+	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
 		 myLatitude = location.getLatitude();
@@ -40,18 +41,21 @@ public class CustomLocationListener implements LocationListener {
 		return myGeoPoint;
 	}
 
+	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
 		Toast.makeText(myParentContext,"GPS Disabled", Toast.LENGTH_SHORT).show();
 		
 	}
 
+	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
 		Toast.makeText(myParentContext,"GPS Enabled", Toast.LENGTH_SHORT).show();
 		
 	}
 
+	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
 		

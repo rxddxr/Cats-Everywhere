@@ -66,40 +66,40 @@
         android:layout_below="@+id/etName"
         android:text="@string/submit" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bPrefUploadNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="16dp"
-        android:text="upload" />
+        android:src="@drawable/upload_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bPrefGalleryNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/bPrefUploadNav"
         android:layout_alignBottom="@+id/bPrefUploadNav"
         android:layout_toRightOf="@+id/bPrefUploadNav"
-        android:text="gallery" />
+        android:src="@drawable/gallery_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bPrefMapsNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/bPrefGalleryNav"
         android:layout_alignBottom="@+id/bPrefGalleryNav"
         android:layout_toRightOf="@+id/bPrefGalleryNav"
-        android:text="maps" />
+        android:src="@drawable/maps_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bPrefPrefNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/bPrefMapsNav"
         android:layout_alignBottom="@+id/bPrefMapsNav"
         android:layout_toRightOf="@+id/bPrefMapsNav"
-        android:text="pref" />
+        android:src="@drawable/pref_button" />
 
 </RelativeLayout>

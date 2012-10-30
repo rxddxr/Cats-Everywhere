@@ -18,8 +18,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +34,8 @@ public class Login extends Activity implements OnClickListener{
 	Button createAccountButton;
 	MyApplication myApp;
 	
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         initialize();
@@ -53,11 +52,13 @@ public class Login extends Activity implements OnClickListener{
     	myApp = (MyApplication) this.getApplication();
     }
 
+	@Override
 	public void onClick(View v) {
 		
 		switch(v.getId()) {
 		case R.id.bLogin:
 			new Thread(new Runnable() {
+				@Override
 				public void run() {
 					verifyCredentials();
 				}
@@ -66,6 +67,7 @@ public class Login extends Activity implements OnClickListener{
 			
 		case R.id.bCreateAccount:
 			new Thread(new Runnable() {
+				@Override
 				public void run() {
 					addToDatabase();
 				}

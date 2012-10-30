@@ -30,7 +30,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -65,7 +64,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private MyApplication userAccessor;
 	
 	//nav bar
-	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
 
 	/** Called when the activity is first created. */
@@ -85,6 +84,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 		
 		upload.setOnClickListener(new View.OnClickListener() {
 
+			@Override
 			public void onClick(View v) {
 				if (bitmap == null) {
 					Toast.makeText(getApplicationContext(),
@@ -94,6 +94,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 							"Please wait...", true);
 					// new ImageUploadTask().execute();
 					new Thread(new Runnable() {
+						@Override
 						public void run() {
 							doFileUpload(filePath);
 						}
@@ -104,10 +105,11 @@ public class ImageUpload extends Activity implements OnClickListener{
 		
 		camera.setOnClickListener(new View.OnClickListener() {
 			
+			@Override
 			public void onClick(View v) {
 				String fileName = "temp.jpg";  
 		        ContentValues values = new ContentValues();  
-		        values.put(MediaStore.Images.Media.TITLE, fileName);  
+		        values.put(MediaColumns.TITLE, fileName);  
 		        mCapturedImageURI = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);  
 
 		        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);  
@@ -120,13 +122,13 @@ public class ImageUpload extends Activity implements OnClickListener{
 	
 	public void initialize() {
 		//nav bar
-    	uploadButtonNav = (Button) findViewById(R.id.bUploadUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bUploadUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (Button) findViewById(R.id.bUploadGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bUploadGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (Button) findViewById(R.id.bUploadMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bUploadMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (Button) findViewById(R.id.bUploadPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bUploadPrefNav);
     	prefButtonNav.setOnClickListener(this);
 	}
 
@@ -377,6 +379,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 			if (myResEntity != null) {
 				Log.i("RESPONSE", response_str);
 				runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						try {
 							// ((TextView)
@@ -407,6 +410,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 		return Integer.toString(photo.hashCode());
 	}
 	
+	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 
