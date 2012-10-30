@@ -14,14 +14,14 @@ import android.widget.Button;
 import android.widget.Gallery;
 
 public class GalleryActivity extends Activity implements OnClickListener{
-	
+
 	Gallery gallery = null;
 	ImageAdapter adapter = null;
-	
+
 	//nav bar
 	private Button uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
-	
-	
+
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {

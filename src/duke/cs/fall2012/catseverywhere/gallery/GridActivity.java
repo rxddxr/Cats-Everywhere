@@ -11,10 +11,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 public class GridActivity extends Activity {
-	
+
 	GridView grid = null;
 	ImageAdapter adapter = null;
-	
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
