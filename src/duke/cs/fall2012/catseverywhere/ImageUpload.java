@@ -20,7 +20,7 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -419,7 +419,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
 		case R.id.bUploadGalleryNav:
-			startActivity(new Intent(this, GridActivity.class));
+			startActivity(new Intent(this, ImageGridActivity.class));
 			break;
 		case R.id.bUploadMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));

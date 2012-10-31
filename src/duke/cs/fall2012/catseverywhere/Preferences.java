@@ -11,7 +11,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -74,7 +74,7 @@ public class Preferences extends Activity implements OnClickListener {
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
 		case R.id.bPrefGalleryNav:
-			startActivity(new Intent(this, GridActivity.class));
+			startActivity(new Intent(this, ImageGridActivity.class));
 			break;
 		case R.id.bPrefMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));

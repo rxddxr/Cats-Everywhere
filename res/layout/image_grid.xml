@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:columnWidth="70dip"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/bGridUploadNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/upload_button" />
+
+        <ImageButton
+            android:id="@+id/bGridGalleryNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/bGridUploadNav"
+            android:layout_alignBottom="@+id/bGridUploadNav"
+            android:layout_toRightOf="@+id/bGridUploadNav"
+            android:src="@drawable/gallery_button" />
+
+        <ImageButton
+            android:id="@+id/bGridMapsNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/bGridGalleryNav"
+            android:layout_alignBottom="@+id/bGridGalleryNav"
+            android:layout_toRightOf="@+id/bGridGalleryNav"
+            android:src="@drawable/maps_button" />
+
+        <ImageButton
+            android:id="@+id/bGridPrefNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/bGridMapsNav"
+            android:layout_alignBottom="@+id/bGridMapsNav"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/bGridMapsNav"
+            android:src="@drawable/pref_button" />
+    </LinearLayout>
+
+</LinearLayout>

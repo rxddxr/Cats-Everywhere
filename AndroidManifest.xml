@@ -72,20 +72,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".gallery.GalleryActivity"
+            android:name=".gallery.ImageGalleryActivity"
             android:label="@string/title_activity_gallery" >
         </activity>
         <activity
-            android:name=".gallery.GridActivity"
+            android:name=".gallery.ImageGridActivity"
             android:label="@string/title_activity_grid" >
         </activity>
         <activity 
             android:name=".ImageUpload"
             android:label="Upload">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

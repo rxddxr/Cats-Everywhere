@@ -17,8 +17,8 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_google_maps">Cat Map</string>
     <string name="title_activity_image_selector">Select an Image</string>
-    <string name="title_activity_gallery">GalleryActivity</string>
-    <string name="title_activity_grid">GridActivity</string>
+    <string name="title_activity_gallery">ImageGalleryActivity</string>
+    <string name="title_activity_grid">ImageGridActivity</string>
     <string name="Gallery">Gallery</string>
     <string name="WebServiceURL">http://10.0.2.2</string>
     <string name="login">login</string>

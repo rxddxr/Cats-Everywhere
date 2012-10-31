@@ -1,6 +1,6 @@
 package duke.cs.fall2012.catseverywhere;
 
-import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -42,7 +42,7 @@ public class Main extends Activity implements OnClickListener {
 			startActivity(new Intent(this, Preferences.class));
 			break;
 		case R.id.bGallery:
-			startActivity(new Intent(this, GridActivity.class));
+			startActivity(new Intent(this, ImageGridActivity.class));
 			break;
 		case R.id.bLoginPage:
 			startActivity(new Intent(this, Login.class));

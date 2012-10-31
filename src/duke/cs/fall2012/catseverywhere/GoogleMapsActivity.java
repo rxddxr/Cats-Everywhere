@@ -8,7 +8,8 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
-import duke.cs.fall2012.catseverywhere.gallery.GridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -70,7 +71,6 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         //myMapView.getOverlays().add(myItemizedOverlay);
         
         final Button button = (Button) findViewById(R.id.button1);
-        
         button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -83,6 +83,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
             }
            
         });
+        
 //      
 //        final Button imgSelectorButton = (Button) findViewById(R.id.button_img_selector);
 //        imgSelectorButton.setOnClickListener(new View.OnClickListener() {
@@ -247,7 +248,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
 		case R.id.bMapsGalleryNav:
-			startActivity(new Intent(this, GridActivity.class));
+			startActivity(new Intent(this, ImageGridActivity.class));
 			break;
 		case R.id.bMapsMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));
