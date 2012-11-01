@@ -10,3 +10,5 @@ gen/duke/cs/fall2012/catseverywhere/R.java
 .DS_Store
 
 res/.DS_Store
+
+bin/
