@@ -32,7 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class ImageGridActivity extends Activity implements OnClickListener {
     
     private GridView gridView;
-    private LazyAdapter adapter;
+    private ImageGridAdapter adapter;
     private String[] imageUrls;
     private InputStream is;
     
@@ -46,7 +46,7 @@ public class ImageGridActivity extends Activity implements OnClickListener {
         
         gridView=(GridView)findViewById(R.id.gridView);
         initialize();
-        adapter=new LazyAdapter(this, imageUrls);
+        adapter=new ImageGridAdapter(this, imageUrls);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
