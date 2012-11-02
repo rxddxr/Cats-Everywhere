@@ -144,7 +144,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     }
     
     private void loadOnlineGeoPoints() {
-        myGeoPoints = myImageAdapter.getRandomGeopoints(2);
+        myGeoPoints = myImageAdapter.getRandomGeopoints(5);
 		
 		for(GeoPoint point: myGeoPoints)
 		{
