@@ -13,7 +13,7 @@
     <string name="name">Name</string>
     <string name="enterName">Enter your name</string>
     <string name="submit">Submit</string>
-    <string name="title_activity_splash">Roar</string>
+    <string name="title_activity_splash">Cats Everywhere</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_google_maps">Cat Map</string>
     <string name="title_activity_image_selector">Select an Image</string>

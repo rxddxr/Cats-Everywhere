@@ -78,7 +78,7 @@
         android:layout_alignBottom="@+id/bUploadGalleryNav"
         android:layout_toRightOf="@+id/bUploadGalleryNav"
         android:src="@drawable/maps_button" />
-
+
     <ImageButton
         android:id="@+id/bUploadPrefNav"
         android:layout_width="wrap_content"

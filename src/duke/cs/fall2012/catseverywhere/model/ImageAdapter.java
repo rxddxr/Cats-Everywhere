@@ -63,7 +63,7 @@ public class ImageAdapter {
 	public ImageAdapter() {
 		myGeoPoints =getGeoPointsFromLocs(getImageLocsFromDb());
 	}
-	
+
 	public ArrayList<GeoPoint> getRandomGeopoints(int n)
 	{
 		ArrayList<GeoPoint> myRandomGeoPoints = new ArrayList<GeoPoint>();
@@ -73,7 +73,7 @@ public class ImageAdapter {
 		{
 			n = myGeoPoints.size() -1;
 		}
-		
+
 		while(imgIndexes.size()< n)
 		{
 			imgIndexes.add(myRandGen.nextInt(n+1));
@@ -83,10 +83,10 @@ public class ImageAdapter {
 		{
 			myRandomGeoPoints.add(myGeoPoints.get(index));
 		}
-		
-	
+
+
 		return myRandomGeoPoints;
-		
+
 	}
 //	
 //	private void getFileFromStream(InputStream in) throws IOException {  
@@ -117,7 +117,7 @@ public class ImageAdapter {
 //		
 
 
-	
+
 //	public String[] getImagePathsFromDb() {
 //		// UPDATE TO PULL FROM DB
 //		// http post
@@ -163,10 +163,10 @@ public class ImageAdapter {
 //		}
 //		return null;
 //	}
-	
+
 	public ArrayList<GeoPoint> getGeoPointsFromLocs(String[] imgLocations)
 	{
-		
+
 		myGeoPoints = new ArrayList<GeoPoint>();
 		for(String location: imgLocations)
 		{
@@ -177,10 +177,10 @@ public class ImageAdapter {
 			 myGeoPoints.add(geoP);
 		 }
 		}
-		
+
 		return myGeoPoints;
 	}
-	
+
 	private float[] parseLatLong(String location, String separator) {
 		// TODO Auto-generated method stub
 		float[] latLong = new float[2];
@@ -262,7 +262,7 @@ public class ImageAdapter {
 //		}
 //
 //	}
-	
+
 //	public int getCount() {
 //		return myImages.size();
 //	}
@@ -279,7 +279,7 @@ public class ImageAdapter {
 //		
 //		return null;
 //	}
-	
+
 //	public void DownloadFile(String fileURL, String fileName) {
 //        try {
 //            File root = Environment.getExternalStorageDirectory();

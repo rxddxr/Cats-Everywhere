@@ -36,7 +36,7 @@ import android.widget.ImageButton;
 
 public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 
-	private static final int PICK_FROM_FILE = 2;
+	//private static final int PICK_FROM_FILE = 2;
 	private MapView myMapView;
 	private static MapController myMapController;
 	private LocationManager myLocManager;
@@ -76,6 +76,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         loadOnlineGeoPoints();
         //myMapView.getOverlays().add(myItemizedOverlay);
         
+        /*
         final Button button = (Button) findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -88,56 +89,19 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
             	
             }
            
-        });
-        
-//      
-//        final Button imgSelectorButton = (Button) findViewById(R.id.button_img_selector);
-//        imgSelectorButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                // Perform action on click
-//            	Intent imageSelctorScreen = new Intent(getApplicationContext(), ImageSelector.class);
-//            	startActivity(imageSelctorScreen);
-//            	
-//            }
-//           
-//        });
-        
+        });    
+        */    
 
-        final Button findMeButton = (Button) findViewById(R.id.button_find_me);
+        
+        final ImageButton findMeButton = (ImageButton) findViewById(R.id.button_find_me);
         findMeButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
             	myMapController.animateTo(myLocListener.getCurrentGeoP());
             	myMapController.setZoom(17);
-            	
             }
            
         });
-        
-
-        final Button uploadButton = (Button) findViewById(R.id.button_upload);
-        uploadButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-                // Perform action on click
-            	Intent imageUploadScreen= new Intent(getApplicationContext(), ImageUpload.class);
-            	startActivity(imageUploadScreen);
-            	
-            }
-           
-        });
-      
-      final Button testButton = (Button) findViewById(R.id.button_test_main);
-      testButton.setOnClickListener(new View.OnClickListener() {
-		@Override
-		public void onClick(View v) {
-              // Perform action on click
-          	Intent testMain= new Intent(getApplicationContext(), Main.class);
-          	startActivity(testMain);
-          	
-          }
-         
-      });
       
       initialize();
 
@@ -171,8 +135,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     	prefButtonNav.setOnClickListener(this);
     }
     
-    
-
+    /*
     @Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -196,6 +159,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 			//myMapView.postInvalidate();
     	}
 	}
+	*/
     
 
     private Bitmap iconize(Bitmap pic)
