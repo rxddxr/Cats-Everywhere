@@ -20,6 +20,8 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import com.google.android.maps.GeoPoint;
+
 import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
 
 import android.app.Activity;
@@ -30,6 +32,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -62,6 +65,8 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private String filePath;
 	private Uri mCapturedImageURI;
 	private MyApplication userAccessor;
+	private ExifInterface myExifInterface;
+	private float[] myPicLoc = new float[2];
 	
 	//nav bar
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
@@ -351,9 +356,15 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private void doFileUpload(String filePath) {
 
 		File file1 = new File(filePath);
+		
 
 		String urlString = "http://squashysquash.com/CatsEverywhere/uploadfile.php";
 		try {
+			myExifInterface = new ExifInterface(filePath);
+			myExifInterface.getLatLong(myPicLoc);
+			System.out.println("Pic latitude: " + myPicLoc[0] + "long: " + myPicLoc[1]);
+			String myPicLatLong = "" + myPicLoc[0] + "|" + myPicLoc[1];
+			GeoPoint geoP = new GeoPoint((int) (myPicLoc[0] * 1E6), (int) (myPicLoc[1] * 1E6));
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(urlString);
 			HttpContext localContext = new BasicHttpContext();
@@ -367,7 +378,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 			reqEntity.addPart("owner", new StringBody("testOwner"));
 			// UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
 			
-			// reqEntity.addPart("location", null);
+			reqEntity.addPart("location", new StringBody(myPicLatLong));
 			// reqEntity.addPart("keywords", null);
 
 			post.setEntity(reqEntity);

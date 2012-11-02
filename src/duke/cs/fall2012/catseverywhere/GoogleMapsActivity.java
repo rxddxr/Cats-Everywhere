@@ -1,5 +1,6 @@
 package duke.cs.fall2012.catseverywhere;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.google.android.maps.MapActivity;
 
@@ -9,6 +10,7 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
+import duke.cs.fall2012.catseverywhere.model.ImageAdapter;
 
 
 import android.content.Context;
@@ -50,6 +52,8 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 	private Bitmap myPickedBitmap;
 	private final int MAX_ICON_WIDTH = 60;
 	private final int MAX_ICON_HEIGHT = 60;
+	private ImageAdapter myImageAdapter;
+	private ArrayList<GeoPoint> myGeoPoints;
 	
 	//nav bar
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
@@ -68,6 +72,8 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         myLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, myLocListener);
         myMarker = myResources.getDrawable(R.raw.blue_circle_60);
         myItemizedOverlay = new CustomItemizedOverlay(myMarker, this);
+        myImageAdapter = new ImageAdapter();
+       myGeoPoints = myImageAdapter.getRandomGeopoints(2);
         //myMapView.getOverlays().add(myItemizedOverlay);
         
         final Button button = (Button) findViewById(R.id.button1);

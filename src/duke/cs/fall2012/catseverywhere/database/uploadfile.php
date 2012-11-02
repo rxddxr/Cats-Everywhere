@@ -24,7 +24,7 @@ echo "n String Parameter send from client side : " . $user;
 //get db fields via POST
 
 //$owner = $_REQUEST['owner'];
-//$locaton = $_REQUEST['location'];
+$location = $_REQUEST['location'];
 $keywords = $_REQUEST['keywords'];
 echo $keywords;
 
@@ -37,6 +37,6 @@ if (!$con)
 
 echo  $target_path1;
 mysql_select_db("catseverywhere", $con);
-mysql_query("INSERT INTO photo (id, path, keywords) VALUES ('$id', '$target_path1', 'keywords')");
+mysql_query("INSERT INTO photo (id, path, keywords, location) VALUES ('$id', '$target_path1', '$keywords', '$location')");
 mysql_close($con);
 ?>

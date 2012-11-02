@@ -1,12 +1,17 @@
 package duke.cs.fall2012.catseverywhere.model;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,17 +21,22 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.google.android.maps.GeoPoint;
+
 import duke.cs.fall2012.catseverywhere.R;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+
 
 /**
  * hardcoded image adapter to showcase the use of grid and gallery project
@@ -35,18 +45,110 @@ public class ImageAdapter extends BaseAdapter {
 
 	private static LayoutInflater inflater = null;
 	private Activity activity;
-	private ArrayList<Drawable> images = new ArrayList<Drawable>();
+	private ArrayList<Drawable> myImages = new ArrayList<Drawable>();
 	private String mode = "";
+	private ExifInterface myExifInterface;
 	InputStream is;
 
 	public ImageAdapter(Activity act, String mode) {
-		String[] pathNames = getImagePathsFromDb();
-		getImagesFromUrls(pathNames);
+		String[] allPaths = getImagePathsFromDb();
+		getImagesFromUrls(allPaths);
 		inflater = (LayoutInflater) act
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		activity = act;
 		this.mode = mode;
 	}
+	public ImageAdapter() {
+		
+	}
+	
+	public ArrayList<GeoPoint> getRandomGeopoints(int n)
+	{
+		String[] allPaths = getImagePathsFromDb();
+		ArrayList<GeoPoint> myGeoPoints = new ArrayList<GeoPoint>();
+		HashSet<Integer> imgIndexes = new HashSet<Integer>();
+		Random myRandGen = new Random();
+		if(n> allPaths.length -1)
+		{
+			n = allPaths.length -1;
+		}
+		
+		while(imgIndexes.size()< n)
+		{
+			imgIndexes.add(myRandGen.nextInt(n+1));
+		}
+		String[] randomPaths = new String[imgIndexes.size()];
+		int i=0;
+		for(int index: imgIndexes)
+		{
+			randomPaths[i] = allPaths[index];
+			i++;
+		}
+		
+		for(String tempPath: randomPaths)
+		{
+			DownloadFile("http://squashysquash.com/CatsEverywhere/" + tempPath, "filename.jpg");
+		}
+//		getImagesFromUrls(randomPaths);
+//		Drawable d;
+//		//File outputDir = this.context.getCacheDir();
+//		//myExifInterface = new ExifInterface(d);
+//		
+//			
+//		
+//		URL url;
+//		try {
+//			for(String tempPath: randomPaths)
+//			{
+//				url = new URL("http://squashysquash.com/CatsEverywhere/" + tempPath);
+//				InputStream content = (InputStream) url.getContent();
+//				String fileName = url.getFile();
+//				float[] myPicLoc = new float[2];
+//				myExifInterface = new ExifInterface(fileName);
+//				myExifInterface.getLatLong(myPicLoc);
+//			    //File imgFile = File.createFromStream(content , "src");
+//			    System.out.println("boo");
+//			   // myImages.add(d);
+//			}
+//		} catch (MalformedURLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		return myGeoPoints;
+		
+	}
+	
+	private void getFileFromStream(InputStream in) throws IOException {  
+		   
+        File tempFile = File.createTempFile("tempFile", ".tmp");  
+        tempFile.deleteOnExit();  
+   
+        FileOutputStream fout = null;  
+   
+        try {  
+   
+            fout = new FileOutputStream(tempFile);  
+            int c;  
+   
+            while ((c = in.read()) != -1) {  
+                fout.write(c);  
+            }  
+   
+        }finally {  
+            if (in != null) {  
+                in.close();  
+            }  
+            if (fout != null) {  
+                fout.close();  
+            }  
+        }  
+    } 
+		
+
+
 	
 	public String[] getImagePathsFromDb() {
 		// UPDATE TO PULL FROM DB
@@ -102,9 +204,11 @@ public class ImageAdapter extends BaseAdapter {
 			{
 				url = new URL("http://squashysquash.com/CatsEverywhere/" + tempPath);
 				InputStream content = (InputStream) url.getContent();
+				//String fileName = url.getFile();
+				
 			    Drawable d = Drawable.createFromStream(content , "src");
 			    System.out.println("boo");
-			    images.add(d);
+			    myImages.add(d);
 			}
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -117,11 +221,11 @@ public class ImageAdapter extends BaseAdapter {
 	}
 	
 	public int getCount() {
-		return images.size();
+		return myImages.size();
 	}
 
 	public Object getItem(int position) {
-		return images.get(position);
+		return myImages.get(position);
 	}
 
 	public long getItemId(int position) {
@@ -134,15 +238,39 @@ public class ImageAdapter extends BaseAdapter {
 				view = inflater.inflate(R.layout.each_image, null);
 			}
 			ImageView iv = (ImageView) view.findViewById(R.id.imageView);
-			iv.setImageDrawable(images.get(position));
+			iv.setImageDrawable(myImages.get(position));
 		} else if (mode.equalsIgnoreCase("gallery")) {
 			if (view == null) {
 				view = inflater.inflate(R.layout.each_image_gallery, null);
 			}
 			ImageView iv = (ImageView) view.findViewById(R.id.imageView);
-			iv.setImageDrawable(images.get(position));
+			iv.setImageDrawable(myImages.get(position));
 		}
 		return view;
 	}
+	
+	public void DownloadFile(String fileURL, String fileName) {
+        try {
+            File root = Environment.getExternalStorageDirectory();
+            URL u = new URL(fileURL);
+            HttpURLConnection c = (HttpURLConnection) u.openConnection();
+            c.setRequestMethod("GET");
+            c.setDoOutput(true);
+            c.connect();
+            FileOutputStream f = new FileOutputStream(new File(root, fileName));
+
+            InputStream in = c.getInputStream();
+
+            byte[] buffer = new byte[1024];
+            int len1 = 0;
+            while ((len1 = in.read(buffer)) > 0) {
+                f.write(buffer, 0, len1);
+            }
+            f.close();
+        } catch (Exception e) {
+            Log.d("Downloader", e.getMessage());
+        }
+	}
+
 
 }
