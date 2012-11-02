@@ -66,7 +66,9 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private Uri mCapturedImageURI;
 	private MyApplication userAccessor;
 	private ExifInterface myExifInterface;
-	private float[] myPicLoc = new float[2];
+	
+	private final String LOC_SEPARATOR = "A";
+
 	
 	//nav bar
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
@@ -356,6 +358,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private void doFileUpload(String filePath) {
 
 		File file1 = new File(filePath);
+		float[] myPicLoc = new float[2];
 		
 
 		String urlString = "http://squashysquash.com/CatsEverywhere/uploadfile.php";
@@ -363,8 +366,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 			myExifInterface = new ExifInterface(filePath);
 			myExifInterface.getLatLong(myPicLoc);
 			System.out.println("Pic latitude: " + myPicLoc[0] + "long: " + myPicLoc[1]);
-			String myPicLatLong = "" + myPicLoc[0] + "|" + myPicLoc[1];
-			GeoPoint geoP = new GeoPoint((int) (myPicLoc[0] * 1E6), (int) (myPicLoc[1] * 1E6));
+			String myPicLatLong = "" + myPicLoc[0]+ LOC_SEPARATOR + myPicLoc[1];
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(urlString);
 			HttpContext localContext = new BasicHttpContext();

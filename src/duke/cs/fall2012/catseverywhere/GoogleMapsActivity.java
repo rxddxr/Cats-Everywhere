@@ -73,7 +73,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         myMarker = myResources.getDrawable(R.raw.blue_circle_60);
         myItemizedOverlay = new CustomItemizedOverlay(myMarker, this);
         myImageAdapter = new ImageAdapter();
-       myGeoPoints = myImageAdapter.getRandomGeopoints(2);
+        loadOnlineGeoPoints();
         //myMapView.getOverlays().add(myItemizedOverlay);
         
         final Button button = (Button) findViewById(R.id.button1);
@@ -143,7 +143,24 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 
     }
     
-    public void initialize() {
+    private void loadOnlineGeoPoints() {
+        myGeoPoints = myImageAdapter.getRandomGeopoints(2);
+		
+		for(GeoPoint point: myGeoPoints)
+		{
+		String picSnippet = "Lat: " + point.getLatitudeE6() +"\nLong: " + point.getLongitudeE6();
+
+		OverlayItem myPicThumb = new OverlayItem(point, "Picture", picSnippet);
+		//myPickedBitmap 	= BitmapFactory.decodeFile(myPickedPath);
+		//Bitmap myPickedIcon = iconize(myPickedBitmap);
+		//Drawable myDrawImg = new BitmapDrawable(myResources, myPickedPath);
+		myItemizedOverlay.addOverlayItem(myPicThumb);
+		myMapView.getOverlays().clear();
+		myMapView.getOverlays().add(myItemizedOverlay);
+		}
+	}
+
+	public void initialize() {
     	//nav bar
     	uploadButtonNav = (ImageButton) findViewById(R.id.bMapsUploadNav);
     	uploadButtonNav.setOnClickListener(this);
