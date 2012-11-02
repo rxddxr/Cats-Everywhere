@@ -150,14 +150,13 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 		{
 		String picSnippet = "Lat: " + point.getLatitudeE6() +"\nLong: " + point.getLongitudeE6();
 
-		OverlayItem myPicThumb = new OverlayItem(point, "Picture", picSnippet);
-		//myPickedBitmap 	= BitmapFactory.decodeFile(myPickedPath);
-		//Bitmap myPickedIcon = iconize(myPickedBitmap);
-		//Drawable myDrawImg = new BitmapDrawable(myResources, myPickedPath);
-		myItemizedOverlay.addOverlayItem(myPicThumb);
+		//OverlayItem myPicThumb = new OverlayItem(point, "Picture", picSnippet);
+		myItemizedOverlay.addOverlayItem(new OverlayItem(point, "Picture", picSnippet));
+		
+		
+		}
 		myMapView.getOverlays().clear();
 		myMapView.getOverlays().add(myItemizedOverlay);
-		}
 	}
 
 	public void initialize() {

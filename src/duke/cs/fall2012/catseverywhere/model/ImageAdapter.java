@@ -81,7 +81,7 @@ public class ImageAdapter {
 		int i=0;
 		for(int index: imgIndexes)
 		{
-			myRandomGeoPoints.add(myGeoPoints.get(i));
+			myRandomGeoPoints.add(myGeoPoints.get(index));
 		}
 		
 	
