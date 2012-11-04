@@ -375,9 +375,9 @@ public class ImageUpload extends Activity implements OnClickListener{
 			reqEntity.addPart("location", new StringBody(myPicLatLong));
 			
 			//add owner
-			//String owner = myApp.getUser();
-			//reqEntity.addPart("owner", new StringBody(owner));
-			reqEntity.addPart("owner", new StringBody("testOwner"));
+			String owner = myApp.getUser();
+			reqEntity.addPart("owner", new StringBody(owner));
+			//reqEntity.addPart("owner", new StringBody("testOwner"));
 
 			post.setEntity(reqEntity);
 			HttpResponse response = client.execute(post, localContext);

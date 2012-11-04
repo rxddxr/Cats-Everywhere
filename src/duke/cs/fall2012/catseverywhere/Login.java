@@ -114,8 +114,8 @@ public class Login extends Activity implements OnClickListener{
 	      
 		System.out.println("result=" + result);
 		if (result.trim().equals("true")) {
-			myApp.setUser(email.toString());//set user
-		    System.out.println("successish");
+			myApp.setUser(email.getText().toString());//set user
+		    System.out.println("login success");
 		    startActivity(new Intent(this, GoogleMapsActivity.class));
 		}
 		else {
