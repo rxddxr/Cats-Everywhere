@@ -22,6 +22,7 @@
 
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,34 +31,44 @@
         </activity>
         <activity
             android:name=".GoogleMapsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_google_maps" >
+            
         </activity>
         <activity
             android:name=".ImageSelector"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_image_selector" >
+            
         </activity>
         <activity
             android:name=".Main"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
             android:name=".Preferences"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_preferences" >
         </activity>
         <activity
             android:name=".Login"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
             android:name=".gallery.ImageGalleryActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_gallery" >
         </activity>
         <activity
             android:name=".gallery.ImageGridActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_grid" >
         </activity>
         <activity 
             android:name=".ImageUpload"
+            android:screenOrientation="portrait"
             android:label="Upload">
         </activity>
     </application>
