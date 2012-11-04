@@ -57,6 +57,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private ImageView imgView;
 	private Button upload;
 	private ImageButton camera;
+	private ImageButton gallery;
 	private EditText caption;
 	private Bitmap bitmap;
 	private ProgressDialog dialog;
@@ -85,6 +86,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 		imgView = (ImageView) findViewById(R.id.ImageView);
 		upload = (Button) findViewById(R.id.Upload);
 		camera = (ImageButton) findViewById(R.id.camera);
+		gallery = (ImageButton) findViewById(R.id.bGallery);
 		caption = (EditText) findViewById(R.id.Caption);
 
 		tv = (TextView) findViewById(R.id.tv);
@@ -126,6 +128,25 @@ public class ImageUpload extends Activity implements OnClickListener{
 		        startActivityForResult(intent, CAMERA_DATA);
 			}
 		});
+		
+		gallery.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				try {
+					Intent intent = new Intent();
+					intent.setType("image/*");
+					intent.setAction(Intent.ACTION_GET_CONTENT);
+					startActivityForResult(
+							Intent.createChooser(intent, "Select Picture"),
+							PICK_IMAGE);
+				} catch (Exception e) {
+					Toast.makeText(getApplicationContext(), e.getMessage(),
+							Toast.LENGTH_LONG).show();
+					Log.e(e.getClass().getName(), e.getMessage(), e);
+				}
+			}
+		});
 
 	}
 	
@@ -142,36 +163,6 @@ public class ImageUpload extends Activity implements OnClickListener{
     	
     	//myApp
     	myApp = (MyApplication) this.getApplication();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.imageupload_menu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		switch (item.getItemId()) {
-		case R.id.ic_menu_gallery:
-			try {
-				Intent intent = new Intent();
-				intent.setType("image/*");
-				intent.setAction(Intent.ACTION_GET_CONTENT);
-				startActivityForResult(
-						Intent.createChooser(intent, "Select Picture"),
-						PICK_IMAGE);
-			} catch (Exception e) {
-				Toast.makeText(getApplicationContext(), e.getMessage(),
-						Toast.LENGTH_LONG).show();
-				Log.e(e.getClass().getName(), e.getMessage(), e);
-			}
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
 	}
 	
 	@Override

@@ -89,4 +89,12 @@
         android:layout_toRightOf="@+id/bUploadMapsNav"
         android:src="@drawable/pref_button" />
 
+    <ImageButton
+        android:id="@+id/bGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/camera"
+        android:src="@android:drawable/ic_menu_gallery" />
+
 </RelativeLayout>
