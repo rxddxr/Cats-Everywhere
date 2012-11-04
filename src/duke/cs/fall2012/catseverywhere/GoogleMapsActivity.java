@@ -1,17 +1,12 @@
 package duke.cs.fall2012.catseverywhere;
 import java.util.ArrayList;
-
 import com.google.android.maps.MapActivity;
-
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
-
 import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
 import duke.cs.fall2012.catseverywhere.model.ImageAdapter;
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,16 +15,12 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
-import android.media.ExifInterface;
 import android.net.Uri;
-
 import android.os.Bundle;
 import android.provider.MediaStore.MediaColumns;
-
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 
@@ -109,20 +100,14 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     {
     	int picWidth = pic.getWidth();
     	int picHeight = pic.getHeight();
-
     	// Constrain to given size but keep aspect ratio
     	float scaleFactor = Math.min(((float) MAX_ICON_WIDTH) / picWidth, ((float) MAX_ICON_HEIGHT) / picHeight);
     	Matrix scale = new Matrix();
     	scale.postScale(scaleFactor, scaleFactor);
     	Bitmap icon = Bitmap.createBitmap(pic, 0, 0, picWidth, picHeight, scale, false);
     	return icon;
-    	
-    	
     }
-   
-
-    	
-	@Override
+   	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_google_maps, menu);
         return true;

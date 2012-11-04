@@ -123,9 +123,9 @@ public class Login extends Activity implements OnClickListener{
 		}
 	        
 	    } catch (ClientProtocolException e) {
-	        // TODO Auto-generated catch block
+	    	e.printStackTrace();
 	    } catch (IOException e) {
-	        // TODO Auto-generated catch block
+	    	e.printStackTrace();
 	    }
 	}
 	
@@ -147,9 +147,9 @@ public class Login extends Activity implements OnClickListener{
 	        startActivity(new Intent(this, GoogleMapsActivity.class));
 
 	    } catch (ClientProtocolException e) {
-	        // TODO Auto-generated catch block
+	    	e.printStackTrace();
 	    } catch (IOException e) {
-	        // TODO Auto-generated catch block
+	    	e.printStackTrace();
 	    }
 	}
 }

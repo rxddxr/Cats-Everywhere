@@ -13,7 +13,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         startupSound = MediaPlayer.create(SplashActivity.this, R.raw.lion_roar_01);
-        //startupSound.start(); //Commented out to avoid making noise in Perkins.
+        startupSound.start(); //Commented out to avoid making noise in Perkins.
         
         Thread timer = new Thread() {
         	@Override
