@@ -67,6 +67,8 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private MyApplication userAccessor;
 	private ExifInterface myExifInterface;
 	
+	private MyApplication myApp;
+	
 	private final String LOC_SEPARATOR = "A";
 
 	
@@ -137,6 +139,9 @@ public class ImageUpload extends Activity implements OnClickListener{
     	mapsButtonNav.setOnClickListener(this);
     	prefButtonNav = (ImageButton) findViewById(R.id.bUploadPrefNav);
     	prefButtonNav.setOnClickListener(this);
+    	
+    	//myApp
+    	myApp = (MyApplication) this.getApplication();
 	}
 
 	@Override
@@ -376,12 +381,12 @@ public class ImageUpload extends Activity implements OnClickListener{
 			reqEntity.addPart("id", new StringBody(getId(file1)));
 			System.out.println("keywords: " +caption.getText().toString());
 			reqEntity.addPart("keywords", new StringBody(caption.getText().toString()));
-			//reqEntity.addPart("owner", new StringBody(userAccessor.getUser()));
-			reqEntity.addPart("owner", new StringBody("testOwner"));
-			// UPDATE THIS TO ADD OWNER, LOCATION, KEYWORD DATA TO DB
-			
 			reqEntity.addPart("location", new StringBody(myPicLatLong));
-			// reqEntity.addPart("keywords", null);
+			
+			//add owner
+			//String owner = myApp.getUser();
+			//reqEntity.addPart("owner", new StringBody(owner));
+			reqEntity.addPart("owner", new StringBody("testOwner"));
 
 			post.setEntity(reqEntity);
 			HttpResponse response = client.execute(post, localContext);
