@@ -38,11 +38,11 @@ public class Preferences extends Activity implements OnClickListener {
     }
     
     public void initialize() {
-    	email = (EditText) findViewById(R.id.etEmail);
-    	password = (EditText) findViewById(R.id.etPassword);
-    	name = (EditText) findViewById(R.id.etName);
-    	submit = (Button) findViewById(R.id.bSubmit);
-    	submit.setOnClickListener(this);
+//    	email = (EditText) findViewById(R.id.etEmail);
+//    	password = (EditText) findViewById(R.id.etPassword);
+//    	name = (EditText) findViewById(R.id.etName);
+//    	submit = (Button) findViewById(R.id.bSubmit);
+//    	submit.setOnClickListener(this);
     	
     	//nav bar
     	uploadButtonNav = (ImageButton) findViewById(R.id.bPrefUploadNav);
@@ -60,14 +60,14 @@ public class Preferences extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch(v.getId()) {
 		
-		case R.id.bSubmit:
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					addToDatabase();
-				}
-			}).start();
-			break;
+//		case R.id.bSubmit:
+//			new Thread(new Runnable() {
+//				@Override
+//				public void run() {
+//					addToDatabase();
+//				}
+//			}).start();
+//			break;
 		
 		//navbar
 		case R.id.bPrefUploadNav:
