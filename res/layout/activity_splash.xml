@@ -1,7 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/leopard" >    
+    android:layout_height="match_parent"
+    android:background="@drawable/leopard" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="37dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:text="Most species of big cats are in decline worldwide. To learn more visit CauseAnUproar.org"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
