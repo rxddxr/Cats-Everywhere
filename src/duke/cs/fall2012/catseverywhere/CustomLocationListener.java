@@ -20,7 +20,6 @@ public class CustomLocationListener implements LocationListener {
 
 	@Override
 	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
 		 myLatitude = location.getLatitude();
 		 myLongitude = location.getLongitude();
 		String displayMessage = "Current location: Lat: " + myLatitude +
@@ -32,7 +31,6 @@ public class CustomLocationListener implements LocationListener {
 	}
 
 	private void animateToCurrLoc() {
-		// TODO Auto-generated method stub
 		GoogleMapsActivity.animateToLoc(myGeoPoint);
 	}
 	
@@ -43,21 +41,18 @@ public class CustomLocationListener implements LocationListener {
 
 	@Override
 	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
 		Toast.makeText(myParentContext,"GPS Disabled", Toast.LENGTH_SHORT).show();
 		
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
 		Toast.makeText(myParentContext,"GPS Enabled", Toast.LENGTH_SHORT).show();
 		
 	}
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
 		
 	}
 
