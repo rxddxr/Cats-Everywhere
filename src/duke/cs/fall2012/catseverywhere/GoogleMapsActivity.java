@@ -1,5 +1,4 @@
 package duke.cs.fall2012.catseverywhere;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.google.android.maps.MapActivity;
@@ -41,22 +40,14 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 	private static MapController myMapController;
 	private LocationManager myLocManager;
 	private CustomLocationListener myLocListener;
-	private Uri myIMGUri;
-	private String myPickedPath="";
-	private ExifInterface myExifInterface;
-	private float[] myPicLoc = new float[2];
-	private GeoPoint myPicGeoPoint;
 	private CustomItemizedOverlay myItemizedOverlay;
 	private Resources myResources;
 	private Drawable myMarker;
-	private Bitmap myPickedBitmap;
 	private final int MAX_ICON_WIDTH = 60;
 	private final int MAX_ICON_HEIGHT = 60;
 	private ImageAdapter myImageAdapter;
 	private ArrayList<GeoPoint> myGeoPoints;
-	
-	//nav bar
-	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav; //nav bar
 	
 	
 	
@@ -74,25 +65,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         myItemizedOverlay = new CustomItemizedOverlay(myMarker, this);
         myImageAdapter = new ImageAdapter();
         loadOnlineGeoPoints();
-        //myMapView.getOverlays().add(myItemizedOverlay);
-        
-        /*
-        final Button button = (Button) findViewById(R.id.button1);
-        button.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-                // Perform action on click
-            	System.out.println("HAI");
-            	Intent myPhotoPicker = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-            	startActivityForResult(myPhotoPicker, PICK_FROM_FILE);
-            	
-            	
-            }
-           
-        });    
-        */    
-
-        
+             
         final ImageButton findMeButton = (ImageButton) findViewById(R.id.button_find_me);
         findMeButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -114,10 +87,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 		{
 		String picSnippet = "Lat: " + point.getLatitudeE6() +"\nLong: " + point.getLongitudeE6();
 
-		//OverlayItem myPicThumb = new OverlayItem(point, "Picture", picSnippet);
-		myItemizedOverlay.addOverlayItem(new OverlayItem(point, "Picture", picSnippet));
-		
-		
+		myItemizedOverlay.addOverlayItem(new OverlayItem(point, "Picture", picSnippet));		
 		}
 		myMapView.getOverlays().clear();
 		myMapView.getOverlays().add(myItemizedOverlay);
@@ -134,34 +104,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     	prefButtonNav = (ImageButton) findViewById(R.id.bMapsPrefNav);
     	prefButtonNav.setOnClickListener(this);
     }
-    
-    /*
-    @Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-    	if (requestCode == PICK_FROM_FILE) {
-			myIMGUri = data.getData(); 
-			myPickedPath = getRealPathFromURI(myIMGUri); //from Gallery
-			System.out.println("Just picked image wit path: " + myPickedPath);
-			myPicGeoPoint = getGeoLocData(myPickedPath);
-			myMapController.animateTo(myPicGeoPoint);
-			myMapController.setZoom(17);
-			String picName = getFileNameFromPath(myPickedPath);
-			System.out.println("IMAGE NAME: " + picName);
-			String picSnippet = "Lat: " + myPicGeoPoint.getLatitudeE6() +"\nLong: " + myPicGeoPoint.getLongitudeE6();
-			OverlayItem myPicThumb = new OverlayItem(myPicGeoPoint, picName, picSnippet);
-			//myPickedBitmap 	= BitmapFactory.decodeFile(myPickedPath);
-			//Bitmap myPickedIcon = iconize(myPickedBitmap);
-			//Drawable myDrawImg = new BitmapDrawable(myResources, myPickedPath);
-			myItemizedOverlay.addOverlayItem(myPicThumb);
-			myMapView.getOverlays().clear();
-			myMapView.getOverlays().add(myItemizedOverlay);
-			//myMapView.postInvalidate();
-    	}
-	}
-	*/
-    
-
+  
     private Bitmap iconize(Bitmap pic)
     {
     	int picWidth = pic.getWidth();
@@ -176,26 +119,9 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     	
     	
     }
-    private GeoPoint getGeoLocData(String path) {
-		// TODO Auto-generated method stub
-		System.out.println("Image path: " + path);
-		try {
-			myExifInterface = new ExifInterface(path);
-			myExifInterface.getLatLong(myPicLoc);
-			System.out.println("Pic latitude: " + myPicLoc[0] + "long: " + myPicLoc[1]);
-			GeoPoint geoP = new GeoPoint((int) (myPicLoc[0] * 1E6), (int) (myPicLoc[1] * 1E6));
-			return geoP;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-    }
+   
 
-    	private String getFileNameFromPath(String path)
-    	{
-    		return path.substring(path.lastIndexOf("/")+1);
-    	}
+    	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_google_maps, menu);
