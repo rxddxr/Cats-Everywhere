@@ -21,11 +21,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 
 public class Preferences extends Activity implements OnClickListener {
 
 	EditText email, password, name;
 	Button submit;
+	SeekBar seekBar;
 	
 	//nav bar
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
@@ -53,6 +55,8 @@ public class Preferences extends Activity implements OnClickListener {
     	mapsButtonNav.setOnClickListener(this);
     	prefButtonNav = (ImageButton) findViewById(R.id.bPrefPrefNav);
     	prefButtonNav.setOnClickListener(this);
+    	
+    	seekBar = (SeekBar) findViewById(R.id.seekBar1);
     	
     }
 
@@ -85,27 +89,27 @@ public class Preferences extends Activity implements OnClickListener {
 		}
 	}
 	
-	public void addToDatabase() {
-		//Add data
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
-		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
-        nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
-        nameValuePairs.add(new BasicNameValuePair("name", name.getText().toString()));
-
-	    try {
-	    	HttpClient httpclient = new DefaultHttpClient();
-		    HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/addEntry.php");
-	        
-	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-	        // Execute HTTP Post Request
-	        httpclient.execute(httppost);
-
-	    } catch (ClientProtocolException e) {
-	    	e.printStackTrace();
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
-	}
-
+//	public void addToDatabase() {
+//		//Add data
+//		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+//		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
+//        nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
+//        nameValuePairs.add(new BasicNameValuePair("name", name.getText().toString()));
+//
+//	    try {
+//	    	HttpClient httpclient = new DefaultHttpClient();
+//		    HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/addEntry.php");
+//	        
+//	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//
+//	        // Execute HTTP Post Request
+//	        httpclient.execute(httppost);
+//
+//	    } catch (ClientProtocolException e) {
+//	    	e.printStackTrace();
+//	    } catch (IOException e) {
+//	    	e.printStackTrace();
+//	    }
+//	}
+//
 }
