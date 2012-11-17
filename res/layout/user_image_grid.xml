@@ -4,7 +4,7 @@
     android:orientation="vertical" >
 
     <GridView
-        android:id="@+id/gridView"
+        android:id="@+id/userGridView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -13,13 +13,6 @@
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dip" />
-
-    <Button 
-        android:id="@+id/bUserGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User"
-        />
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +20,7 @@
         android:orientation="horizontal" >
 
         <ImageButton
-            android:id="@+id/bGridUploadNav"
+            android:id="@+id/bUserGridUploadNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -35,31 +28,31 @@
             android:src="@drawable/upload_button" />
 
         <ImageButton
-            android:id="@+id/bGridGalleryNav"
+            android:id="@+id/bUserGridGalleryNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/bGridUploadNav"
-            android:layout_alignBottom="@+id/bGridUploadNav"
-            android:layout_toRightOf="@+id/bGridUploadNav"
+            android:layout_alignBaseline="@+id/bUserGridUploadNav"
+            android:layout_alignBottom="@+id/bUserGridUploadNav"
+            android:layout_toRightOf="@+id/bUserGridUploadNav"
             android:src="@drawable/gallery_button" />
 
         <ImageButton
-            android:id="@+id/bGridMapsNav"
+            android:id="@+id/bUserGridMapsNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/bGridGalleryNav"
-            android:layout_alignBottom="@+id/bGridGalleryNav"
-            android:layout_toRightOf="@+id/bGridGalleryNav"
+            android:layout_alignBaseline="@+id/bUserGridGalleryNav"
+            android:layout_alignBottom="@+id/bUserGridGalleryNav"
+            android:layout_toRightOf="@+id/bUserGridGalleryNav"
             android:src="@drawable/maps_button" />
 
         <ImageButton
-            android:id="@+id/bGridPrefNav"
+            android:id="@+id/bUserGridPrefNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/bGridMapsNav"
-            android:layout_alignBottom="@+id/bGridMapsNav"
+            android:layout_alignBaseline="@+id/bUserGridMapsNav"
+            android:layout_alignBottom="@+id/bUserGridMapsNav"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/bGridMapsNav"
+            android:layout_toRightOf="@+id/bUserGridMapsNav"
             android:src="@drawable/pref_button" />
     </LinearLayout>
 

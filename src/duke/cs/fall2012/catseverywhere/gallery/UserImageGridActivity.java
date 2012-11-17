@@ -8,14 +8,11 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import duke.cs.fall2012.catseverywhere.GoogleMapsActivity;
-import duke.cs.fall2012.catseverywhere.ImageUpload;
-import duke.cs.fall2012.catseverywhere.Preferences;
-import duke.cs.fall2012.catseverywhere.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,24 +26,29 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.AdapterView.OnItemClickListener;
+import duke.cs.fall2012.catseverywhere.GoogleMapsActivity;
+import duke.cs.fall2012.catseverywhere.ImageUpload;
+import duke.cs.fall2012.catseverywhere.MyApplication;
+import duke.cs.fall2012.catseverywhere.Preferences;
+import duke.cs.fall2012.catseverywhere.R;
 
-public class ImageGridActivity extends Activity implements OnClickListener {
-    
-    private GridView gridView;
+public class UserImageGridActivity extends Activity implements OnClickListener {
+
+	private GridView gridView;
     private ImageGridAdapter adapter;
     private String[] imageUrls;
     private InputStream is;
-    private Button userGalleryButton;
     private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
+    private MyApplication myApp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.image_grid);
+        setContentView(R.layout.user_image_grid);
+        myApp = (MyApplication) this.getApplication();
         imageUrls = getImagePathsFromDb();
         System.out.println("WOO" + imageUrls);
-
-        gridView=(GridView)findViewById(R.id.gridView);
+        gridView=(GridView)findViewById(R.id.userGridView);
         initialize();
         adapter=new ImageGridAdapter(this, imageUrls);
         gridView.setAdapter(adapter);
@@ -56,27 +58,17 @@ public class ImageGridActivity extends Activity implements OnClickListener {
         	}
         });
         
-        userGalleryButton = (Button) findViewById(R.id.bUserGallery);
-    	final Context context = this;
-
-        userGalleryButton.setOnClickListener(new View.OnClickListener() {
-		
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(context, UserImageGridActivity.class));
-			}
-		});
     }
     
     public void initialize() {
 		//nav bar
-    	uploadButtonNav = (ImageButton) findViewById(R.id.bGridUploadNav);
+    	uploadButtonNav = (ImageButton) findViewById(R.id.bUserGridUploadNav);
     	uploadButtonNav.setOnClickListener(this);
-    	galleryButtonNav = (ImageButton) findViewById(R.id.bGridGalleryNav);
+    	galleryButtonNav = (ImageButton) findViewById(R.id.bUserGridGalleryNav);
     	galleryButtonNav.setOnClickListener(this);
-    	mapsButtonNav = (ImageButton) findViewById(R.id.bGridMapsNav);
+    	mapsButtonNav = (ImageButton) findViewById(R.id.bUserGridMapsNav);
     	mapsButtonNav.setOnClickListener(this);
-    	prefButtonNav = (ImageButton) findViewById(R.id.bGridPrefNav);
+    	prefButtonNav = (ImageButton) findViewById(R.id.bUserGridPrefNav);
     	prefButtonNav.setOnClickListener(this);
 	}
     
@@ -101,7 +93,11 @@ public class ImageGridActivity extends Activity implements OnClickListener {
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
-					"http://squashysquash.com/CatsEverywhere/getImages.php");
+					"http://squashysquash.com/CatsEverywhere/getUserImages.php");
+			MultipartEntity reqEntity = new MultipartEntity();
+			String user = myApp.getUser();
+			reqEntity.addPart("user", new StringBody(user));
+			httppost.setEntity(reqEntity);
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
 			is = entity.getContent();
@@ -145,20 +141,19 @@ public class ImageGridActivity extends Activity implements OnClickListener {
 		switch(v.getId()) {
 
 		//navbar
-		case R.id.bGridUploadNav:
+		case R.id.bUserGridUploadNav:
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
-		case R.id.bGridGalleryNav:
+		case R.id.bUserGridGalleryNav:
 			startActivity(new Intent(this, ImageGridActivity.class));
 			break;
-		case R.id.bGridMapsNav:
+		case R.id.bUserGridMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));
 			break;
-		case R.id.bGridPrefNav:
+		case R.id.bUserGridPrefNav:
 			startActivity(new Intent(this, Preferences.class));
 			break;
 		}
 	}
-    
-    
+	
 }

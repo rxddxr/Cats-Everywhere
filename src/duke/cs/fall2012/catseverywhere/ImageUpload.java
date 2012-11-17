@@ -58,7 +58,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private TextView tv, res;
 	private String filePath;
 	private Uri mCapturedImageURI;
-	private MyApplication userAccessor;
 	private ExifInterface myExifInterface;
 	
 	private MyApplication myApp;
@@ -75,7 +74,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.imageupload);
-		userAccessor = new MyApplication();
 		imgView = (ImageView) findViewById(R.id.ImageView);
 		upload = (Button) findViewById(R.id.Upload);
 		camera = (ImageButton) findViewById(R.id.camera);
@@ -363,7 +361,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 			MultipartEntity reqEntity = new MultipartEntity();
 			reqEntity.addPart("uploadedFile", bin1);
 			reqEntity.addPart("id", new StringBody(getId(file1)));
-			System.out.println("keywords: " +caption.getText().toString());
 			reqEntity.addPart("keywords", new StringBody(caption.getText().toString()));
 			reqEntity.addPart("location", new StringBody(myPicLatLong));
 			
