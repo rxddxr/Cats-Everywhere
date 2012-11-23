@@ -77,7 +77,6 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 		for(GeoPoint point: myGeoPoints)
 		{
 		String picSnippet = "Lat: " + point.getLatitudeE6() +"\nLong: " + point.getLongitudeE6();
-
 		myItemizedOverlay.addOverlayItem(new OverlayItem(point, "Picture", picSnippet));		
 		}
 		myMapView.getOverlays().clear();

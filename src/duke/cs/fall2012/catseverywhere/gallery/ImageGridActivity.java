@@ -61,7 +61,6 @@ public class ImageGridActivity extends Activity implements OnClickListener {
 
         userGalleryButton.setOnClickListener(new View.OnClickListener() {
 		
-			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(context, UserImageGridActivity.class));
 			}
