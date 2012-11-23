@@ -24,7 +24,7 @@ public class CustomLocationListener implements LocationListener {
 		 myLongitude = location.getLongitude();
 		String displayMessage = "Current location: Lat: " + myLatitude +
 				                 "\nLong: " + myLongitude;
-		Toast.makeText(myParentContext, displayMessage, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(myParentContext, displayMessage, Toast.LENGTH_SHORT).show();
 		myGeoPoint = new GeoPoint( (int) (myLatitude * 1E6), (int) (myLongitude * 1E6));
 		animateToCurrLoc();
 		
