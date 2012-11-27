@@ -95,17 +95,6 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     	prefButtonNav.setOnClickListener(this);
     }
   
-    private Bitmap iconize(Bitmap pic)
-    {
-    	int picWidth = pic.getWidth();
-    	int picHeight = pic.getHeight();
-    	// Constrain to given size but keep aspect ratio
-    	float scaleFactor = Math.min(((float) MAX_ICON_WIDTH) / picWidth, ((float) MAX_ICON_HEIGHT) / picHeight);
-    	Matrix scale = new Matrix();
-    	scale.postScale(scaleFactor, scaleFactor);
-    	Bitmap icon = Bitmap.createBitmap(pic, 0, 0, picWidth, picHeight, scale, false);
-    	return icon;
-    }
    	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_google_maps, menu);
