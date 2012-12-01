@@ -22,5 +22,6 @@
     <string name="Gallery">Gallery</string>
     <string name="WebServiceURL">http://10.0.2.2</string>
     <string name="login">login</string>
+    <string name="GetImageLocationsPHP">http://squashysquash.com/CatsEverywhere/getImageLocations.php</string>
 
 </resources>
