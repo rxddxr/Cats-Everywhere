@@ -381,10 +381,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 					@Override
 					public void run() {
 						try {
-							// ((TextView)
-							// myResEntity).setTextColor(Color.GREEN);
-							// res.setText("n Response from server : n " +
-							// response_str);
 							Toast.makeText(
 									getApplicationContext(),
 									"Upload Complete. Check the server uploads directory.",

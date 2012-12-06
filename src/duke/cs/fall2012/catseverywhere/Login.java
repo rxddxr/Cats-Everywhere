@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Login extends Activity implements OnClickListener{
+	//Class for log in and account creation page. 
 	
 	EditText email, password, name;
 	Button loginButton;
@@ -87,7 +88,7 @@ public class Login extends Activity implements OnClickListener{
 	    try {
 	    	HttpClient httpclient = new DefaultHttpClient();
 	    	
-	    	//TODO: MAKE PHP TO CHECK CREDENTIALS
+	    	//ACCESS PHP TO CHECK CREDENTIALS
 		    HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/login.php");
 	        
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));

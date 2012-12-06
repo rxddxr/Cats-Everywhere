@@ -6,7 +6,7 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
-import duke.cs.fall2012.catseverywhere.model.ImageAdapter;
+import duke.cs.fall2012.catseverywhere.model.GeoDBAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -36,7 +36,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 	private Drawable myMarker;
 	private final int MAX_ICON_WIDTH = 60;
 	private final int MAX_ICON_HEIGHT = 60;
-	private ImageAdapter myImageAdapter;
+	private GeoDBAdapter myImageAdapter;
 	private ArrayList<GeoPoint> myGeoPoints;
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav; //nav bar
 	
@@ -54,7 +54,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
         myLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, myLocListener);
         myMarker = myResources.getDrawable(R.raw.blue_circle_60);
         myItemizedOverlay = new CustomItemizedOverlay(myMarker, this);
-        myImageAdapter = new ImageAdapter();
+        myImageAdapter = new GeoDBAdapter();
         loadOnlineGeoPoints();
              
         final ImageButton findMeButton = (ImageButton) findViewById(R.id.button_find_me);
@@ -95,17 +95,6 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
     	prefButtonNav.setOnClickListener(this);
     }
   
-    private Bitmap iconize(Bitmap pic)
-    {
-    	int picWidth = pic.getWidth();
-    	int picHeight = pic.getHeight();
-    	// Constrain to given size but keep aspect ratio
-    	float scaleFactor = Math.min(((float) MAX_ICON_WIDTH) / picWidth, ((float) MAX_ICON_HEIGHT) / picHeight);
-    	Matrix scale = new Matrix();
-    	scale.postScale(scaleFactor, scaleFactor);
-    	Bitmap icon = Bitmap.createBitmap(pic, 0, 0, picWidth, picHeight, scale, false);
-    	return icon;
-    }
    	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_google_maps, menu);

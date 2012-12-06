@@ -31,12 +31,14 @@ public class ImageLoader {
     ExecutorService executorService; 
     private String mode;
     final int stub_id;
+    private final String GALLERY = "gallery";
+    private final String GRID = "grid";
     
     public ImageLoader(Context context, String mode){
         fileCache=new FileCache(context);
         executorService=Executors.newFixedThreadPool(5);
         this.mode = mode;
-        if (mode == "grid") {
+        if (mode.equals(GRID)) {
         	stub_id = R.drawable.stub;
         }
         else {
@@ -69,10 +71,10 @@ public class ImageLoader {
         
         //from SD cache
         Bitmap b = null;
-        if (mode == "grid") {
+        if (mode.equals(GRID)) {
             b = decodeFile(f);
         }
-        else if (mode == "gallery") {
+        else if (mode.equals(GALLERY)) {
         	FileInputStream stream1=new FileInputStream(f);
         	b = BitmapFactory.decodeStream(stream1);
         }
@@ -92,10 +94,10 @@ public class ImageLoader {
             OutputStream os = new FileOutputStream(f);
             Utils.CopyStream(is, os);
             os.close();
-            if (mode == "grid") {
+            if (mode.equals(GRID)) {
                 bitmap = decodeFile(f);
             }
-            else if (mode == "gallery") {
+            else if (mode.equals(GALLERY)) {
             	FileInputStream stream1=new FileInputStream(f);
             	bitmap = BitmapFactory.decodeStream(stream1);
             }

@@ -1,15 +1,5 @@
 package duke.cs.fall2012.catseverywhere;
 
-import java.io.IOException;
-import java.util.*;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
 import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
 
@@ -24,7 +14,8 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 
 public class Preferences extends Activity implements OnClickListener {
-
+	//Preferences Page
+	
 	EditText email, password, name;
 	Button submit;
 	SeekBar seekBar;
@@ -39,13 +30,7 @@ public class Preferences extends Activity implements OnClickListener {
         initialize();
     }
     
-    public void initialize() {
-//    	email = (EditText) findViewById(R.id.etEmail);
-//    	password = (EditText) findViewById(R.id.etPassword);
-//    	name = (EditText) findViewById(R.id.etName);
-//    	submit = (Button) findViewById(R.id.bSubmit);
-//    	submit.setOnClickListener(this);
-    	
+    public void initialize() {	
     	//nav bar
     	uploadButtonNav = (ImageButton) findViewById(R.id.bPrefUploadNav);
     	uploadButtonNav.setOnClickListener(this);
@@ -56,22 +41,12 @@ public class Preferences extends Activity implements OnClickListener {
     	prefButtonNav = (ImageButton) findViewById(R.id.bPrefPrefNav);
     	prefButtonNav.setOnClickListener(this);
     	
-    	seekBar = (SeekBar) findViewById(R.id.seekBar1);
-    	
+    	seekBar = (SeekBar) findViewById(R.id.seekBar1);  	
     }
 
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
-		
-//		case R.id.bSubmit:
-//			new Thread(new Runnable() {
-//				@Override
-//				public void run() {
-//					addToDatabase();
-//				}
-//			}).start();
-//			break;
 		
 		//navbar
 		case R.id.bPrefUploadNav:
@@ -88,28 +63,4 @@ public class Preferences extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	
-//	public void addToDatabase() {
-//		//Add data
-//		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
-//		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
-//        nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
-//        nameValuePairs.add(new BasicNameValuePair("name", name.getText().toString()));
-//
-//	    try {
-//	    	HttpClient httpclient = new DefaultHttpClient();
-//		    HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/addEntry.php");
-//	        
-//	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//
-//	        // Execute HTTP Post Request
-//	        httpclient.execute(httppost);
-//
-//	    } catch (ClientProtocolException e) {
-//	    	e.printStackTrace();
-//	    } catch (IOException e) {
-//	    	e.printStackTrace();
-//	    }
-//	}
-//
 }

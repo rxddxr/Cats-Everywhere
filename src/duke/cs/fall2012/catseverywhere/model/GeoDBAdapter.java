@@ -16,11 +16,11 @@ import org.json.JSONException;
 import com.google.android.maps.GeoPoint;
 import android.util.Log;
 
-public class ImageAdapter {
+public class GeoDBAdapter {
 	private final String LOC_SEPARATOR = "A";
 	private ArrayList<GeoPoint> myGeoPoints;
 	InputStream is;
-	public ImageAdapter() {
+	public GeoDBAdapter() {
 		myGeoPoints =getGeoPointsFromLocs(getImageLocsFromDb());
 	}
 
