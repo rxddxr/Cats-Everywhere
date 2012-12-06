@@ -44,7 +44,6 @@ public class ImageGridActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_grid);
         imageUrls = getImagePathsFromDb();
-        System.out.println("WOO" + imageUrls);
 
         gridView=(GridView)findViewById(R.id.gridView);
         initialize();
