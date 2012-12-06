@@ -22,5 +22,8 @@
     <string name="Gallery">Gallery</string>
     <string name="WebServiceURL">http://10.0.2.2</string>
     <string name="login">login</string>
+    <string name="filter">Choose a keyword to filter with.</string>
+    <string name="OK">OK</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
