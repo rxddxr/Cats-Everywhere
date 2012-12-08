@@ -111,7 +111,6 @@ public class GeoDBAdapter {
 			String[] sArray = new String[jArray.length()];
 			for (int i = 0; i < jArray.length(); i++) {
 				sArray[i] = jArray.getString(i);
-				System.out.println(sArray[i]);
 			}
 			return sArray;
 		} catch (JSONException e3) {

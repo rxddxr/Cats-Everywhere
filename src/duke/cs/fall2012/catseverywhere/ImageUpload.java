@@ -19,7 +19,7 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -172,10 +172,8 @@ public class ImageUpload extends Activity implements OnClickListener{
 					String selectedImagePath = getPath(selectedImageUri);
 					if (selectedImagePath != null) {
 						filePath = selectedImagePath;
-						System.out.println("1");
 					} else if (filemanagerstring != null) {
 						filePath = filemanagerstring;
-						System.out.println("2");
 					} else {
 						Toast.makeText(getApplicationContext(), "Unknown path",
 								Toast.LENGTH_LONG).show();
@@ -207,7 +205,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 								Toast.LENGTH_LONG).show();
 						Log.e("Bitmap", "Unknown path");
 					}
-					System.out.println("IMAGE PATH: " + selectedImagePath);
 
 					if (filePath != null) {
 						decodeFile(filePath);
@@ -302,6 +299,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 
 	public String getPath(Uri uri) {
 		String[] projection = { MediaColumns.DATA };
+		@SuppressWarnings("deprecation")
 		Cursor cursor = managedQuery(uri, projection, null, null, null);
 		if (cursor != null) {
 			// HERE YOU WILL GET A NULLPOINTER IF CURSOR IS NULL
@@ -352,7 +350,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 		try {
 			myExifInterface = new ExifInterface(filePath);
 			myExifInterface.getLatLong(myPicLoc);
-			System.out.println("Pic latitude: " + myPicLoc[0] + "long: " + myPicLoc[1]);
 			String myPicLatLong = "" + myPicLoc[0]+ LOC_SEPARATOR + myPicLoc[1];
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(urlString);
@@ -371,7 +368,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 
 			post.setEntity(reqEntity);
 			HttpResponse response = client.execute(post, localContext);
-			System.out.println("PHP RESPONSE: " + response);
 			myResEntity = response.getEntity();
 
 			final String response_str = EntityUtils.toString(myResEntity);
@@ -414,7 +410,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
 		case R.id.bUploadGalleryNav:
-			startActivity(new Intent(this, ImageGridActivity.class));
+			startActivity(new Intent(this, NormalImageGridActivity.class));
 			break;
 		case R.id.bUploadMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));

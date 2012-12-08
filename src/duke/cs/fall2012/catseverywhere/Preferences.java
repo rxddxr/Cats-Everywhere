@@ -1,7 +1,7 @@
 package duke.cs.fall2012.catseverywhere;
 
 
-import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -53,7 +53,7 @@ public class Preferences extends Activity implements OnClickListener {
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
 		case R.id.bPrefGalleryNav:
-			startActivity(new Intent(this, ImageGridActivity.class));
+			startActivity(new Intent(this, NormalImageGridActivity.class));
 			break;
 		case R.id.bPrefMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));

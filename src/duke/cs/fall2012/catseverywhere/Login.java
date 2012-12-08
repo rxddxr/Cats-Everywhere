@@ -113,10 +113,8 @@ public class Login extends Activity implements OnClickListener{
 				Log.e("log_tag", "Error converting result " + e2.toString());
 		}
 	      
-		System.out.println("result=" + result);
 		if (result.trim().equals("true")) {
 			myApp.setUser(email.getText().toString());//set user
-		    System.out.println("login success");
 		    startActivity(new Intent(this, GoogleMapsActivity.class));
 		}
 		else {

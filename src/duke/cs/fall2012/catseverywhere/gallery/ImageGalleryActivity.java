@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Gallery;
 
+@SuppressWarnings("deprecation")
 public class ImageGalleryActivity extends Activity {
 	
 	private Gallery gallery;

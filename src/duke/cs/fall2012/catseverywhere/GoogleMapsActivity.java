@@ -5,7 +5,7 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
-import duke.cs.fall2012.catseverywhere.gallery.ImageGridActivity;
+import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
 import duke.cs.fall2012.catseverywhere.model.GeoDBAdapter;
 import android.content.Context;
 import android.content.Intent;
@@ -133,7 +133,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 			startActivity(new Intent(this, ImageUpload.class));
 			break;
 		case R.id.bMapsGalleryNav:
-			startActivity(new Intent(this, ImageGridActivity.class));
+			startActivity(new Intent(this, NormalImageGridActivity.class));
 			break;
 		case R.id.bMapsMapsNav:
 			startActivity(new Intent(this, GoogleMapsActivity.class));

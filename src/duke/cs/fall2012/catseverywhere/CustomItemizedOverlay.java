@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
+@SuppressWarnings("rawtypes")
 public class CustomItemizedOverlay extends ItemizedOverlay{
 	private List<OverlayItem> myOverlayItems = new ArrayList<OverlayItem>();
 	private Context myContext;
