@@ -1,3 +1,4 @@
+
 package duke.cs.fall2012.catseverywhere.model;
 
 import java.io.BufferedReader;
@@ -15,15 +16,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import com.google.android.maps.GeoPoint;
 import android.util.Log;
-
+/**
+ * Class used to access a MYSQL database and extract geolocation data. As more users download the app the database 
+ * will get larger and larger, so getting the location data for all the pictures won't be practical and it would be
+ * messy if all of the were displayed. To solve this problem data from a specific number of randomly chosen images
+ * will be extracted.
+ */
 public class GeoDBAdapter {
-	private final String LOC_SEPARATOR = "A";
-	private ArrayList<GeoPoint> myGeoPoints;
+	
+	private final String LOC_SEPARATOR = "A";	
+	private ArrayList<GeoPoint> myGeoPoints;	
 	InputStream is;
+
+	
 	public GeoDBAdapter() {
 		myGeoPoints =getGeoPointsFromLocs(getImageLocsFromDb());
 	}
 
+	/**
+	 * @param Generate geoPoint objects from the location information of
+	 * n randomly chosen images in the database.
+	 * @return
+	 */
 	public ArrayList<GeoPoint> getRandomGeopoints(int n)
 	{
 		ArrayList<GeoPoint> myRandomGeoPoints = new ArrayList<GeoPoint>();
@@ -49,6 +63,11 @@ public class GeoDBAdapter {
 
 	}
 
+	/**Method to create an Arraylist of GeoPoints given a string array of latitudes and longitudes
+	 * @param Array of image locations (latitude and longitude in String form, separted by
+	 * some character in the database. In this case we've set the separator to "A"
+	 * @return An ArrayList of GeoPoints
+	 */
 	public ArrayList<GeoPoint> getGeoPointsFromLocs(String[] imgLocations)
 	{
 
@@ -66,6 +85,13 @@ public class GeoDBAdapter {
 		return myGeoPoints;
 	}
 
+	/**
+	 * @param Latitude and Longitude values separtead by a character or string
+	 * In order for this method to work the separator should match the "separator"
+	 * parameter.
+	 * @param separator:
+	 * @return
+	 */
 	private float[] parseLatLong(String location, String separator) {
 		// TODO Auto-generated method stub
 		float[] latLong = new float[2];
@@ -78,6 +104,10 @@ public class GeoDBAdapter {
 		}
 		return null;
 	}
+	/**Retrieve the image locations stored in a MYSQL database using a predetermined
+	 * PHP script.
+	 * @return
+	 */
 	public String[] getImageLocsFromDb() {
 		String result = "";
 		try {
