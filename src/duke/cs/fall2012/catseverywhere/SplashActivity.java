@@ -30,7 +30,9 @@ public class SplashActivity extends Activity {
     			{
         			e.printStackTrace();
     			}finally{
-    				Intent login = new Intent(getApplicationContext(), Login.class);
+//    				Intent login = new Intent(getApplicationContext(), Login.class);
+//    				startActivity(login);
+    				Intent login = new Intent(getApplicationContext(), CreateOrLogin.class);
     				startActivity(login);
     			}
         	}
