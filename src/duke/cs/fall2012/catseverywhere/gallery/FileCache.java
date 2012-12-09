@@ -5,6 +5,10 @@ import android.content.Context;
 
 //Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
 
+/**
+ * File caching class, used in the application's photo gallery.
+ *
+ */
 public class FileCache {
     
     private File cacheDir;

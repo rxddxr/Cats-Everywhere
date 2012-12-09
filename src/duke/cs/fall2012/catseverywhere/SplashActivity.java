@@ -6,6 +6,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 
+/**
+ * Splash page that runs each time the application is opened. Easily customizable by replacing
+ *the background image. 
+ *
+ */
 public class SplashActivity extends Activity {
 	private MediaPlayer startupSound;
     @Override
@@ -13,7 +18,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         startupSound = MediaPlayer.create(SplashActivity.this, R.raw.lion_roar_01);
-        startupSound.start(); 
+        //startupSound.start(); 
         
         Thread timer = new Thread() {
         	@Override

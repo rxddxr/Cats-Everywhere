@@ -1,36 +1,28 @@
 package duke.cs.fall2012.catseverywhere;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.InputStreamReader;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.MediaColumns;
@@ -41,8 +33,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
+
+/**
+ * Class used to upload pictures to a webserver using multipart entities. Image information, and image
+ * paths are also uploaded to a developer-specified MYSQL database.
+ *
+ */
 
 public class ImageUpload extends Activity implements OnClickListener{
 	private static final int PICK_IMAGE = 1;
@@ -55,7 +53,7 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private Bitmap bitmap;
 	private ProgressDialog dialog;
 	private HttpEntity myResEntity;
-	private TextView tv, res;
+	//private TextView tv, res;
 	private String filePath;
 	private Uri mCapturedImageURI;
 	private ExifInterface myExifInterface;
@@ -80,8 +78,8 @@ public class ImageUpload extends Activity implements OnClickListener{
 		gallery = (ImageButton) findViewById(R.id.bGallery);
 		caption = (EditText) findViewById(R.id.Caption);
 
-		tv = (TextView) findViewById(R.id.tv);
-		res = (TextView) findViewById(R.id.res);
+		//tv = (TextView) findViewById(R.id.tv);
+		//res = (TextView) findViewById(R.id.res);
 		initialize();
 		
 		upload.setOnClickListener(new View.OnClickListener() {
@@ -222,81 +220,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 		}
 	}
 
-	class ImageUploadTask extends AsyncTask<Void, Void, String> {
-		@Override
-		protected String doInBackground(Void... unsued) {
-			try {
-				HttpClient httpClient = new DefaultHttpClient();
-				HttpContext localContext = new BasicHttpContext();
-				HttpPost httpPost = new HttpPost(
-						getString(R.string.WebServiceURL)
-								+ "/cfc/iphonewebservice.cfc?method=TestUploadPhoto");
-
-				MultipartEntity entity = new MultipartEntity(
-						HttpMultipartMode.BROWSER_COMPATIBLE);
-
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				bitmap.compress(CompressFormat.JPEG, 100, bos);
-				byte[] data = bos.toByteArray();
-				entity.addPart("returnformat", new StringBody("json"));
-				entity.addPart("uploaded", new ByteArrayBody(data,
-						"myImage.jpg"));
-				entity.addPart("photoCaption", new StringBody(caption.getText()
-						.toString()));
-				httpPost.setEntity(entity);
-				HttpResponse response = httpClient.execute(httpPost,
-						localContext);
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(
-								response.getEntity().getContent(), "UTF-8"));
-
-				String sResponse = reader.readLine();
-				return sResponse;
-			} catch (Exception e) {
-				if (dialog.isShowing())
-					dialog.dismiss();
-				Toast.makeText(getApplicationContext(), e.getMessage(),
-						Toast.LENGTH_LONG).show();
-				Log.e(e.getClass().getName(), e.getMessage(), e);
-				return null;
-			}
-
-			// (null);
-		}
-
-		@Override
-		protected void onProgressUpdate(Void... unsued) {
-
-		}
-
-		@Override
-		protected void onPostExecute(String sResponse) {
-			try {
-				if (dialog.isShowing())
-					dialog.dismiss();
-
-				if (sResponse != null) {
-					JSONObject JResponse = new JSONObject(sResponse);
-					int success = JResponse.getInt("SUCCESS");
-					String message = JResponse.getString("MESSAGE");
-					if (success == 0) {
-						Toast.makeText(getApplicationContext(), message,
-								Toast.LENGTH_LONG).show();
-					} else {
-						Toast.makeText(getApplicationContext(),
-								"Photo uploaded successfully",
-								Toast.LENGTH_SHORT).show();
-						caption.setText("");
-					}
-				}
-			} catch (Exception e) {
-				Toast.makeText(getApplicationContext(), e.getMessage(),
-						Toast.LENGTH_LONG).show();
-				Log.e(e.getClass().getName(), e.getMessage(), e);
-			}
-		}
-	}
-
 	public String getPath(Uri uri) {
 		String[] projection = { MediaColumns.DATA };
 		@SuppressWarnings("deprecation")
@@ -340,6 +263,11 @@ public class ImageUpload extends Activity implements OnClickListener{
 
 	}
 
+	/**
+	 * Given a file path upload the image along with it's location, unique id,
+	 * keywords and owner.
+	 * @param filePath
+	 */
 	private void doFileUpload(String filePath) {
 
 		File file1 = new File(filePath);
@@ -392,12 +320,13 @@ public class ImageUpload extends Activity implements OnClickListener{
 			Log.e("Debug", "error: " + ex.getMessage(), ex);
 		}
 	}
-
+	
+	/*
+	 * Create an id for photo to use as id in database. uses hashcode to
+	 * create unique id for each file
+	 */
 	public String getId(File photo) {
-		/*
-		 * Create an id for photo to use as id in database. uses hashcode to
-		 * create unique id for each file
-		 */
+		
 		return Integer.toString(photo.hashCode());
 	}
 	

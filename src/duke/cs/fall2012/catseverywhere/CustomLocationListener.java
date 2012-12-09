@@ -8,6 +8,12 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.widget.Toast;
 
+/**
+ * Class used to center the Google Maps activity to the current users location.
+ * When GPS is enable or disabled a toast message will let the user know of
+ * the change.
+ *
+ */
 public class CustomLocationListener implements LocationListener {
 	private Context myParentContext;
 	private double myLatitude;
