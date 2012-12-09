@@ -44,6 +44,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Class used to upload pictures to a webserver using multipart entities. Image information, and image
+ * paths are also uploaded to a developer-specified MYSQL database.
+ *
+ */
+
 public class ImageUpload extends Activity implements OnClickListener{
 	private static final int PICK_IMAGE = 1;
 	private static final int CAMERA_DATA = 0;
@@ -222,81 +228,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 		}
 	}
 
-	class ImageUploadTask extends AsyncTask<Void, Void, String> {
-		@Override
-		protected String doInBackground(Void... unsued) {
-			try {
-				HttpClient httpClient = new DefaultHttpClient();
-				HttpContext localContext = new BasicHttpContext();
-				HttpPost httpPost = new HttpPost(
-						getString(R.string.WebServiceURL)
-								+ "/cfc/iphonewebservice.cfc?method=TestUploadPhoto");
-
-				MultipartEntity entity = new MultipartEntity(
-						HttpMultipartMode.BROWSER_COMPATIBLE);
-
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				bitmap.compress(CompressFormat.JPEG, 100, bos);
-				byte[] data = bos.toByteArray();
-				entity.addPart("returnformat", new StringBody("json"));
-				entity.addPart("uploaded", new ByteArrayBody(data,
-						"myImage.jpg"));
-				entity.addPart("photoCaption", new StringBody(caption.getText()
-						.toString()));
-				httpPost.setEntity(entity);
-				HttpResponse response = httpClient.execute(httpPost,
-						localContext);
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(
-								response.getEntity().getContent(), "UTF-8"));
-
-				String sResponse = reader.readLine();
-				return sResponse;
-			} catch (Exception e) {
-				if (dialog.isShowing())
-					dialog.dismiss();
-				Toast.makeText(getApplicationContext(), e.getMessage(),
-						Toast.LENGTH_LONG).show();
-				Log.e(e.getClass().getName(), e.getMessage(), e);
-				return null;
-			}
-
-			// (null);
-		}
-
-		@Override
-		protected void onProgressUpdate(Void... unsued) {
-
-		}
-
-		@Override
-		protected void onPostExecute(String sResponse) {
-			try {
-				if (dialog.isShowing())
-					dialog.dismiss();
-
-				if (sResponse != null) {
-					JSONObject JResponse = new JSONObject(sResponse);
-					int success = JResponse.getInt("SUCCESS");
-					String message = JResponse.getString("MESSAGE");
-					if (success == 0) {
-						Toast.makeText(getApplicationContext(), message,
-								Toast.LENGTH_LONG).show();
-					} else {
-						Toast.makeText(getApplicationContext(),
-								"Photo uploaded successfully",
-								Toast.LENGTH_SHORT).show();
-						caption.setText("");
-					}
-				}
-			} catch (Exception e) {
-				Toast.makeText(getApplicationContext(), e.getMessage(),
-						Toast.LENGTH_LONG).show();
-				Log.e(e.getClass().getName(), e.getMessage(), e);
-			}
-		}
-	}
-
 	public String getPath(Uri uri) {
 		String[] projection = { MediaColumns.DATA };
 		@SuppressWarnings("deprecation")
@@ -340,6 +271,11 @@ public class ImageUpload extends Activity implements OnClickListener{
 
 	}
 
+	/**
+	 * Given a file path upload the image along with it's location, unique id,
+	 * keywords and owner.
+	 * @param filePath
+	 */
 	private void doFileUpload(String filePath) {
 
 		File file1 = new File(filePath);
@@ -392,12 +328,13 @@ public class ImageUpload extends Activity implements OnClickListener{
 			Log.e("Debug", "error: " + ex.getMessage(), ex);
 		}
 	}
-
+	
+	/*
+	 * Create an id for photo to use as id in database. uses hashcode to
+	 * create unique id for each file
+	 */
 	public String getId(File photo) {
-		/*
-		 * Create an id for photo to use as id in database. uses hashcode to
-		 * create unique id for each file
-		 */
+		
 		return Integer.toString(photo.hashCode());
 	}
 	

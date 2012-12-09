@@ -9,6 +9,10 @@ import android.graphics.drawable.Drawable;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
+/**
+ * Class used to keep a collection of items/markers that will be placed on top of Google Maps.
+ *
+ */
 @SuppressWarnings("rawtypes")
 public class CustomItemizedOverlay extends ItemizedOverlay{
 	private List<OverlayItem> myOverlayItems = new ArrayList<OverlayItem>();
@@ -16,7 +20,6 @@ public class CustomItemizedOverlay extends ItemizedOverlay{
 
 	public CustomItemizedOverlay(Drawable defaultMarker) {
 		super(boundCenterBottom(defaultMarker));
-		// TODO Auto-generated constructor stub
 	}
 	
 	public CustomItemizedOverlay(Drawable defaultMarker, Context context) {
@@ -34,13 +37,11 @@ public class CustomItemizedOverlay extends ItemizedOverlay{
 	}
 	@Override
 	protected OverlayItem createItem(int arg0) {
-		// TODO Auto-generated method stub
 		return myOverlayItems.get(arg0);
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return myOverlayItems.size();
 	}
 	
