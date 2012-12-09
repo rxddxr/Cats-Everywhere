@@ -18,6 +18,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Class for log in and account creation page.
@@ -86,7 +88,8 @@ public class Login extends Activity implements OnClickListener{
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
         nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
-
+        System.out.println(email.getText());
+        System.out.println(password.getText());
         InputStream is = null;
         String result = "";
 	    try {

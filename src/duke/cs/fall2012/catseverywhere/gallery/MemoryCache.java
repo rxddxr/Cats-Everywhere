@@ -10,6 +10,10 @@ import android.util.Log;
 
 //Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
 
+/**
+ * Memory caching class, used in the application's photo gallery.
+ *
+ */
 public class MemoryCache {
 
     private static final String TAG = "MemoryCache";
