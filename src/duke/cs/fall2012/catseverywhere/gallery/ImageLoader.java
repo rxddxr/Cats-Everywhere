@@ -23,6 +23,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+//Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
+
 public class ImageLoader {
     
     MemoryCache memoryCache=new MemoryCache();

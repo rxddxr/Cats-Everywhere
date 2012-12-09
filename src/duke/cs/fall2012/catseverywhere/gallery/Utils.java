@@ -3,6 +3,8 @@ package duke.cs.fall2012.catseverywhere.gallery;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+//Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
+
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os)
     {

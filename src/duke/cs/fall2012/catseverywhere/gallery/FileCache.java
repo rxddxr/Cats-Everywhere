@@ -3,6 +3,8 @@ package duke.cs.fall2012.catseverywhere.gallery;
 import java.io.File;
 import android.content.Context;
 
+//Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
+
 public class FileCache {
     
     private File cacheDir;

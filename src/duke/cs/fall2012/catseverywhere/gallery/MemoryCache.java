@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+//Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
+
 public class MemoryCache {
 
     private static final String TAG = "MemoryCache";
