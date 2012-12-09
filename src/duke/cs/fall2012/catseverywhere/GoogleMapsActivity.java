@@ -1,27 +1,25 @@
 package duke.cs.fall2012.catseverywhere;
 import java.util.ArrayList;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
-import com.google.android.maps.OverlayItem;
-import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
-import duke.cs.fall2012.catseverywhere.model.GeoDBAdapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore.MediaColumns;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
+import com.google.android.maps.MapView;
+import com.google.android.maps.OverlayItem;
+
+import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
+import duke.cs.fall2012.catseverywhere.model.GeoDBAdapter;
 
 
 public class GoogleMapsActivity extends MapActivity implements OnClickListener{
@@ -34,8 +32,6 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 	private CustomItemizedOverlay myItemizedOverlay;
 	private Resources myResources;
 	private Drawable myMarker;
-	private final int MAX_ICON_WIDTH = 60;
-	private final int MAX_ICON_HEIGHT = 60;
 	private GeoDBAdapter myImageAdapter;
 	private ArrayList<GeoPoint> myGeoPoints;
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav; //nav bar
@@ -111,18 +107,7 @@ public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 		myMapController.animateTo(geoPoint);
 	}
 	
-	public String getRealPathFromURI(Uri contentUri) {
-        String [] proj 		= {MediaColumns.DATA};
-        Cursor cursor 		= managedQuery( contentUri, proj, null, null,null);
-        
-        if (cursor == null) return null;
-        
-        int column_index 	= cursor.getColumnIndexOrThrow(MediaColumns.DATA);
-        
-        cursor.moveToFirst();
-
-        return cursor.getString(column_index);
-	}
+	
 	
 	@Override
 	public void onClick(View v) {

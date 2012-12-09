@@ -13,7 +13,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         startupSound = MediaPlayer.create(SplashActivity.this, R.raw.lion_roar_01);
-        startupSound.start(); 
+        //startupSound.start(); 
         
         Thread timer = new Thread() {
         	@Override
