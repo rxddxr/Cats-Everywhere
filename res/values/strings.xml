@@ -26,5 +26,6 @@
     <string name="OK">OK</string>
     <string name="cancel">Cancel</string>
     <string name="GetImageLocationsPHP">http://squashysquash.com/CatsEverywhere/getImageLocations.php</string>
+    <string name="title_activity_create_or_login">CreateOrLogin</string>
 
 </resources>

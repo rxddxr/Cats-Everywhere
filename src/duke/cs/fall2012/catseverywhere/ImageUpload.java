@@ -77,9 +77,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 		camera = (ImageButton) findViewById(R.id.camera);
 		gallery = (ImageButton) findViewById(R.id.bGallery);
 		caption = (EditText) findViewById(R.id.Caption);
-
-		//tv = (TextView) findViewById(R.id.tv);
-		//res = (TextView) findViewById(R.id.res);
 		initialize();
 		
 		upload.setOnClickListener(new View.OnClickListener() {
@@ -292,8 +289,6 @@ public class ImageUpload extends Activity implements OnClickListener{
 			//add owner
 			String owner = myApp.getUser();
 			reqEntity.addPart("owner", new StringBody(owner));
-			//reqEntity.addPart("owner", new StringBody("testOwner"));
-
 			post.setEntity(reqEntity);
 			HttpResponse response = client.execute(post, localContext);
 			myResEntity = response.getEntity();

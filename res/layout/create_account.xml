@@ -36,10 +36,24 @@
         android:hint="@string/enterPw"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/bLogin"
+    <TextView
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login" />
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/etName1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enterName"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/bCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="create account" />
 
 </LinearLayout>

@@ -10,9 +10,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    
-    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApplication"
         android:icon="@drawable/leopard_icon"
@@ -22,60 +21,73 @@
 
         <activity
             android:name=".SplashActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_splash" >
+            android:label="@string/title_activity_splash"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".GoogleMapsActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_google_maps" >
-            
+            android:label="@string/title_activity_google_maps"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ImageSelector"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_image_selector" >
-            
+            android:label="@string/title_activity_image_selector"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Main"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Preferences"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_preferences" >
+            android:label="@string/title_activity_preferences"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".CreateAccount"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
+        </activity>
+         <activity
             android:name=".Login"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".gallery.ImageGalleryActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_gallery" >
+            android:label="@string/title_activity_gallery"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".gallery.ImageGridActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_grid" >
+            android:label="@string/title_activity_grid"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity 
+        <activity
             android:name=".ImageUpload"
-            android:screenOrientation="portrait"
-            android:label="Upload">
+            android:label="Upload"
+            android:screenOrientation="portrait" >
         </activity>
-        
         <activity
             android:name=".gallery.UserImageGridActivity"
-            android:screenOrientation="portrait"
-            android:label="UserImageGridActivity">
+            android:label="UserImageGridActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".CreateOrLogin"
+            android:label="@string/title_activity_create_or_login"
+            android:screenOrientation="portrait"  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
