@@ -3,6 +3,10 @@ package duke.cs.fall2012.catseverywhere.gallery;
 import java.io.File;
 import android.content.Context;
 
+/**
+ * File caching class, used in the application's photo gallery.
+ *
+ */
 public class FileCache {
     
     private File cacheDir;

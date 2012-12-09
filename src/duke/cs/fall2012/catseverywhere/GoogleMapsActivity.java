@@ -22,6 +22,14 @@ import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
 import duke.cs.fall2012.catseverywhere.model.GeoDBAdapter;
 
 
+/**
+ * Class that displays Google Maps with image markers overlayed on top where
+ * random pictures from the online database were taken. The user can sroll
+ * and usi multitouch gestures to zoom in and out. Taping on a blue image
+ * marker displays the latitude and longitude of where the picture was
+ * taken.
+ *
+ */
 public class GoogleMapsActivity extends MapActivity implements OnClickListener{
 
 	//private static final int PICK_FROM_FILE = 2;

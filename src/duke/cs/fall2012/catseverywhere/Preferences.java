@@ -13,8 +13,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
+/**
+ * Placeholder class for the preferences page. Each developer will have to
+ * decide what user preferences such as privacy settings to include.
+ *
+ */
 public class Preferences extends Activity implements OnClickListener {
-	//Preferences Page
+	
 	
 	EditText email, password, name;
 	Button submit;

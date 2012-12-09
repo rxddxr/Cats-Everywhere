@@ -27,8 +27,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Class for log in and account creation page.
+ *
+ */
 public class Login extends Activity implements OnClickListener{
-	//Class for log in and account creation page. 
+	 
 	
 	EditText email, password, name;
 	Button loginButton;
