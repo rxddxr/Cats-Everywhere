@@ -19,7 +19,10 @@ public class UserImageGridActivity extends ImageGridActivity {
 
 	private MyApplication myApp;
 
-	@Override
+	/**
+     * Initializes the layout of the activity for components specific to this grid gallery
+     * followed by a call to the superclass' onCreate()
+     */
 	public void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.user_image_grid);
 		gridView = (GridView) findViewById(R.id.userGridView);
@@ -27,6 +30,9 @@ public class UserImageGridActivity extends ImageGridActivity {
 		super.onCreate(savedInstanceState);
 	}
 
+	/**
+	 * Initializes the navigation bar at the bottom of the gallery.
+	 */
 	public void initialize() {
 		// nav bar
 		uploadButtonNav = (ImageButton) findViewById(R.id.bUserGridUploadNav);
@@ -39,6 +45,10 @@ public class UserImageGridActivity extends ImageGridActivity {
 		prefButtonNav.setOnClickListener(this);
 	}
 
+	/**
+	 * @return HttpPost that is the PHP to get the paths of the photos of the user who is currently
+	 * using the application.
+	 */
 	public HttpPost setHttpPost() {
 		try {
 			HttpPost post = new HttpPost(
@@ -55,7 +65,9 @@ public class UserImageGridActivity extends ImageGridActivity {
 		return null;
 	}
 
-	@Override
+	/**
+	 * Sets the functionality of the buttons in the navigation bar of the gallery.
+	 */
 	public void onClick(View v) {
 		switch (v.getId()) {
 

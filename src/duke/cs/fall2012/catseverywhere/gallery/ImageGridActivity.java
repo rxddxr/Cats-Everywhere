@@ -23,6 +23,12 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.AdapterView.OnItemClickListener;
 
+
+/**
+ * Implements functionality common to all galleries in the grid style and outlines
+ * what methods are required to be implemented when creating a new grid gallery. 
+ *
+ */
 public abstract class ImageGridActivity extends Activity implements
 		OnClickListener {
 
@@ -32,6 +38,10 @@ public abstract class ImageGridActivity extends Activity implements
 	protected InputStream is;
 	protected ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 
+	/**
+	 * Initializes the layout for components common to all grid galleries and creates the 
+	 * ImageGridAdapter.
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		imageUrls = getImagePathsFromDb();
@@ -46,13 +56,34 @@ public abstract class ImageGridActivity extends Activity implements
 		});
 	}
 
+	/**
+	 * Initializes the navigation bar at the bottom of each gallery. Must be different for
+	 * every gallery because even though the buttons have the same functionality in every gallery,
+	 * in each XML files, they must have unique names. Therefore, this method must be implemented in every 
+	 * ImageGridActivity subclass rather than in this class. 
+	 */
 	public abstract void initialize();
 	
+	/**
+	 * @return an HttpPost that can be executed to get image paths from a developer-specified 
+	 *  MYSQL database.
+	 */
 	public abstract HttpPost setHttpPost();
+	
+	/**
+	 * Sets the functionality of the buttons in the navigation bar of the gallery. Like initialize(),
+	 * this must be different for every gallery because even though the buttons have the same
+	 * functionality in every gallery, in each XML files, they must have unique names. Therefore,
+	 * this method must be implemented in every ImageGridActivity subclass rather than in this class.
+	 */
+	public abstract void onClick(View v);
 
+	/**
+	 * @return an array of strings containing the URLs indicating where the photos are being stored 
+	 * on the webserver.
+	 */
 	public String[] getImagePathsFromDb() {
-		// UPDATE TO PULL FROM DB
-		// http post
+		// Get and execute the HttpPost
 		String result = "";
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
@@ -81,7 +112,7 @@ public abstract class ImageGridActivity extends Activity implements
 			Log.e("log_tag", "Error converting result " + e2.toString());
 		}
 
-		// parse json data
+		// parse JSON data
 		JSONArray jArray = null;
 		try {
 			jArray = new JSONArray(result);
@@ -97,9 +128,11 @@ public abstract class ImageGridActivity extends Activity implements
 		return null;
 	}
 
-	// used to implement nav bar
-	public abstract void onClick(View v);
-
+	/**
+	 * Starts the activity that displays the gallery which displays pictures in full screen
+	 * @param position references which photo should be initially opened based on which thumbnail
+	 * was tapped
+	 */
 	private void startImageGalleryActivity(int position) {
 		Intent i = new Intent(this, ImageGalleryActivity.class);
 		i.putExtra("IMAGES", imageUrls);

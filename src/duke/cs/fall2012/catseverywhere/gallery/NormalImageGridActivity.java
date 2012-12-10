@@ -19,7 +19,10 @@ public class NormalImageGridActivity extends ImageGridActivity {
 	
     private Button userGalleryButton;
 
-    @Override
+    /**
+     * Initializes the layout of the activity for components specific to this grid gallery
+     * followed by a call to the superclass' onCreate()
+     */
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.image_grid);
         gridView=(GridView)findViewById(R.id.gridView);
@@ -34,6 +37,9 @@ public class NormalImageGridActivity extends ImageGridActivity {
         super.onCreate(savedInstanceState);
     }
     
+    /**
+     * Initializes the navigation bar at the bottom of the gallery.
+     */
     public void initialize() {
 		//nav bar
     	uploadButtonNav = (ImageButton) findViewById(R.id.bGridUploadNav);
@@ -46,11 +52,16 @@ public class NormalImageGridActivity extends ImageGridActivity {
     	prefButtonNav.setOnClickListener(this);
 	}
     
+    /**
+     * @return HttpPost that is the PHP to get the paths of the photos
+     */
     public HttpPost setHttpPost() {
     	return new HttpPost("http://squashysquash.com/CatsEverywhere/getImages.php");
     }
     
-	@Override
+	/**
+	 * Sets the functionality of the buttons in the navigation bar of the gallery.
+	 */
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {

@@ -25,6 +25,11 @@ import android.widget.ImageView;
 
 //Copyright (c) 2009-2012 Fedor Vlasov <thest2@gmail.com>
 
+/**
+ * Class that allows images to be displayed in the galleries. Gets bitmaps from the URLs of the photos
+ * which are then set in the GridViews of the galleries.
+ *
+ */
 public class ImageLoader {
     
     MemoryCache memoryCache=new MemoryCache();
@@ -48,6 +53,10 @@ public class ImageLoader {
         }
     }
     
+    /**
+     * @param url is a reference to where the image is being stored on the server
+     * @param imageView is the view in which the image will be displayed
+     */
     public void displayImage(String url, ImageView imageView)
     {
         imageViews.put(imageView, url);
@@ -67,6 +76,11 @@ public class ImageLoader {
         executorService.submit(new PhotosLoader(p));
     }
     
+    /**
+     * @param url is a reference to where the image is being stored on the server
+     * @return a bitmap of the image from the URL
+     * @throws FileNotFoundException
+     */
     private Bitmap getBitmap(String url) throws FileNotFoundException 
     {
         File f=fileCache.getFile(url);
@@ -112,7 +126,9 @@ public class ImageLoader {
         }
     }
 
-    //decodes image and scales it to reduce memory consumption
+    /**
+     * decodes image and scales it to reduce memory consumption
+     */
     private Bitmap decodeFile(File f){
         try {
             //decode image size
