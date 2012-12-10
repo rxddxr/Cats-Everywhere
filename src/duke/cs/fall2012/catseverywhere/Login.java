@@ -33,7 +33,6 @@ import android.widget.EditText;
  */
 public class Login extends Activity implements OnClickListener{
 	 
-	
 	EditText email, password, name;
 	Button loginButton;
 	Button createAccountButton;
