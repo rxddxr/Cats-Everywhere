@@ -14,3 +14,4 @@ Cats Everywhere requires the Standard Android Library & Google API's.
 -effects.jar
 -usb.jar
 -maps.jar
+-httpmime-4.2.1.jar (for uploading/getting images)
