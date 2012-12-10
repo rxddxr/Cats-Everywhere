@@ -72,7 +72,7 @@ public class Login extends Activity implements OnClickListener{
 		
 	
 	public void verifyCredentials() {
-		//Add data
+		//Add data to post to php
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
         nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
@@ -83,12 +83,12 @@ public class Login extends Activity implements OnClickListener{
 	    try {
 	    	HttpClient httpclient = new DefaultHttpClient();
 	    	
-	    	//ACCESS PHP TO CHECK CREDENTIALS
+	    	//Access PHP via server to check credentials
 		    HttpPost httppost = new HttpPost("http://squashysquash.com/CatsEverywhere/login.php");
 	        
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-	        // Execute HTTP Post Request
+	        //Execute HTTP Post Request
 	        HttpResponse response = httpclient.execute(httppost);
 	        HttpEntity entity = response.getEntity();
 			is = entity.getContent();
@@ -124,7 +124,7 @@ public class Login extends Activity implements OnClickListener{
 	}
 	
 	public void addToDatabase() {
-		//Add data
+		//Add new user to database
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 		nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString()));
         nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString()));
@@ -136,7 +136,7 @@ public class Login extends Activity implements OnClickListener{
 	        
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-	        // Execute HTTP Post Request
+	        // Access PHP via server to add new user to database
 	        httpclient.execute(httppost);
 	        startActivity(new Intent(this, GoogleMapsActivity.class));
 

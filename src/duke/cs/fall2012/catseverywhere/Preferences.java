@@ -19,8 +19,6 @@ import android.widget.SeekBar;
  *
  */
 public class Preferences extends Activity implements OnClickListener {
-	
-	
 	EditText email, password, name;
 	Button submit;
 	SeekBar seekBar;
