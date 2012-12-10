@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.view.View.OnClickListener;
 
 
+/**
+ * Class that lets the user select between the login page and
+ * the account creation page
+ *
+ */
 public class CreateOrLogin extends Activity implements OnClickListener {
 	private Button toLoginActButton, toCreateActButton;
 

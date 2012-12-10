@@ -22,7 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * Class for log in and account creation page.
+ * Class account creation page.
  *
  */
 public class CreateAccount extends Activity implements OnClickListener{

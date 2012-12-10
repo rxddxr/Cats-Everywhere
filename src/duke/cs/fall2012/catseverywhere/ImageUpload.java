@@ -42,6 +42,7 @@ import duke.cs.fall2012.catseverywhere.gallery.NormalImageGridActivity;
  *
  */
 
+
 public class ImageUpload extends Activity implements OnClickListener{
 	private static final int PICK_IMAGE = 1;
 	private static final int CAMERA_DATA = 0;
@@ -67,7 +68,8 @@ public class ImageUpload extends Activity implements OnClickListener{
 	private ImageButton uploadButtonNav, galleryButtonNav, mapsButtonNav, prefButtonNav;
 	
 
-	/** Called when the activity is first created. */
+	/** Called when the activity is first created.
+	 * Buttons are set up */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -151,7 +153,13 @@ public class ImageUpload extends Activity implements OnClickListener{
     	myApp = (MyApplication) this.getApplication();
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+	 Get image path of selected picture form gallery or picture taken with the phone's
+	 built-in camera.
+	 */
 	@Override
+	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case PICK_IMAGE:
@@ -217,6 +225,10 @@ public class ImageUpload extends Activity implements OnClickListener{
 		}
 	}
 
+	/**
+	 * 
+	 *Get a file path as a string given a URI
+	 */
 	public String getPath(Uri uri) {
 		String[] projection = { MediaColumns.DATA };
 		@SuppressWarnings("deprecation")
@@ -231,6 +243,11 @@ public class ImageUpload extends Activity implements OnClickListener{
 			return null;
 	}
 
+	/**
+	 * Decode image file given a string with its path
+	 *
+	 */
+	
 	public void decodeFile(String filePath) {
 		// Decode image size
 		BitmapFactory.Options o = new BitmapFactory.Options();
