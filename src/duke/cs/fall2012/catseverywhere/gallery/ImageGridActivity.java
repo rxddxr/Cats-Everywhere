@@ -25,8 +25,12 @@ import android.widget.AdapterView.OnItemClickListener;
 
 
 /**
- * Implements functionality common to all galleries in the grid style and outlines
- * what methods are required to be implemented when creating a new grid gallery. 
+ * Implements functionality common to all galleries that use the grid style. The "grid style"
+ * means that the images are displayed as a grid of thumbnails which can be pressed to be expand the
+ * photos to display fullscreen on the phone. This also outlines what methods are required to be 
+ * implemented when creating a new grid gallery. To create a different type of grid gallery, create
+ * a class which is a subclass of this one and implement the abstract methods. This allows programmers
+ * to only have to code functionality unique to that specific grid gallery.
  *
  */
 public abstract class ImageGridActivity extends Activity implements

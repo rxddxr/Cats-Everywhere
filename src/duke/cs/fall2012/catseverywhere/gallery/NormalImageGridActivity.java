@@ -15,6 +15,11 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
+/**
+ * Creates a grid gallery that displays all images that have been uploaded by any user. Includes
+ * functionality to access a gallery of images solely taken by the current user.
+ *
+ */
 public class NormalImageGridActivity extends ImageGridActivity {
 	
     private Button userGalleryButton;

@@ -22,10 +22,13 @@ public abstract class ImageAdapter extends BaseAdapter {
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     
+    /**
+     * @return the length of the array data, i.e. how many images there are
+     */
 	public int getCount() {
 		return data.length;
 	}
-
+	
 	public Object getItem(int position) {
 		return position;
 	}

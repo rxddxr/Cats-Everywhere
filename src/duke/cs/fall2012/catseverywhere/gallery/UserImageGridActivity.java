@@ -15,6 +15,9 @@ import duke.cs.fall2012.catseverywhere.MyApplication;
 import duke.cs.fall2012.catseverywhere.Preferences;
 import duke.cs.fall2012.catseverywhere.R;
 
+/**
+ * Creates a grid gallery that displays all images uploaded by the user logged into the application.
+ */
 public class UserImageGridActivity extends ImageGridActivity {
 
 	private MyApplication myApp;
