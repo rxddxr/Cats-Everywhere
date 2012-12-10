@@ -4,6 +4,9 @@ import duke.cs.fall2012.catseverywhere.R;
 import android.app.Activity;
 import android.view.View;
 
+/**
+ * An ImageAdapter that ensures images are displayed in the appropriate size for fullscreen galleries.
+ */
 public class ImageGalleryAdapter extends ImageAdapter {
 
 	public ImageGalleryAdapter(Activity a, String[] d) {

@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+/**
+ * Acts as a bridge between an AdapterView (either a Gallery or GridView, depending on the type of
+ * gallery) and the images being displayed in this view.
+ */
 public abstract class ImageAdapter extends BaseAdapter {
 
     protected Activity activity;
@@ -23,22 +27,34 @@ public abstract class ImageAdapter extends BaseAdapter {
     }
     
     /**
-     * @return the length of the array data, i.e. how many images there are
+     * @return how many images are in data
      */
 	public int getCount() {
 		return data.length;
 	}
 	
+	/**
+	 * @return the image associated with the specified position
+	 */
 	public Object getItem(int position) {
 		return position;
 	}
 
+	/**
+	 * @return the row id associated with the specified position
+	 */
 	public long getItemId(int position) {
 		return position;
 	}
 	
+	/**
+	 * @return a view hierarchy from the specified xml resource
+	 */
 	public abstract View inflate();
 	
+	/**
+	 * @return a View that displays the data at the specified position
+	 */
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View vi = convertView;
 		if (convertView == null)
